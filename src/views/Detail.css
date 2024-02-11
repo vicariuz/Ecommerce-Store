@@ -1,0 +1,18 @@
+.container-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80.7vh;
+  width: 100%;
+}
+
+.card-detail {
+  background-color: aliceblue;
+
+  width: 70rem;
+  height: 30rem;
+}
+.img-pizza {
+  width: 35%;
+  height: 100%;
+}
