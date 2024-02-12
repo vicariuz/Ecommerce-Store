@@ -4,7 +4,7 @@ import "./Detail.css";
 import { Link } from "react-router-dom";
 
 export default function Detail() {
-  const { pizza, setCart } = useContext(Context);
+  const { pizza, setCart, renderEstrellas } = useContext(Context);
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ export default function Detail() {
           {
             img: pizza.img,
             name: pizza.name,
-            price: pizza.price,
+            price: pizza.discountprice,
             qty: 1,
           },
         ];
@@ -44,33 +44,58 @@ export default function Detail() {
 
         <div className="">
           <h2 className=" text-capitalize mb-3 ">{pizza.name}</h2>
+          <p id = "subtitulo">About this product:</p>
           <p className="pe-5">{pizza.desc}</p>
           <strong>
-            <p>Ingredientes:</p>
+            <p>STRAIN HIGHLIGHTS:</p>
           </strong>
-          <ul style={{ listStyleType: "none", padding: 0 }}>
-            {pizza.ingredients.map((ingredient, index) => (
-              <li key={index}>
-                <img
-                  src="/img/pizza-svgrepo-com.svg"
-                  alt="logo"
-                  style={{
-                    width: "30px",
-                    height: "30px",
-                    marginRight: "10px",
-                  }}
-                />
-                {ingredient}
-              </li>
-            ))}
-          </ul>
+          <div className="feelingsSt">
+          <img
+                src="/img/iconmonstr-thumb-10.svg"
+                alt=""
+                style={{ width: "15px", height: "15px", marginRight: "10px", fill: "green" }}
+              /> 
+              <h6>Feelings:</h6>
+              <div className="feelingcontainer">
+              {pizza.feelings}
+              </div>
+          </div>
+          <div className="feelingsSt">
+          <img
+                src="/img/iconmonstr-thumb-6.svg"
+                alt=""
+                style={{ width: "15px", height: "15px", marginRight: "10px", fill: "green" }}
+              /> 
+              <h6>Negatives:</h6>
+              <div className="negativecontainer">
+              {pizza.negatives}
+              </div>
+          </div>
+          <div className="feelingsSt">
+          <img
+                src="/img/iconmonstr-medical-13.svg"
+                alt=""
+                style={{ width: "18px", height: "18px", marginRight: "10px", fill: "green" }}
+              /> 
+              <h6>Helps with:</h6>
+              <div className="helpcontainer">
+              {pizza.helpwith}
+              </div>
+          </div>
           <div className="d-flex justify-content-between align-items-center">
-            <h3 className="text-primary ">
+            <div className="rating">
+              <h5>Rating:</h5>
+            <p>{renderEstrellas()}{pizza.rating}</p>
+            </div>
+            <div className="precioPost">
+              <h6>Starting at</h6>
+            <h5 className="textPrice">
               {pizza.price.toLocaleString("es-CL", {
                 style: "currency",
                 currency: "CLP",
               })}
-            </h3>
+            </h5>
+            </div>
             <button onClick={handleAdd} className="btn btn-danger me-5">
               <img
                 src="/img/cart-plus-svgrepo-com.svg"
