@@ -1,50 +1,41 @@
-/* Estilos para el componente Login */
-
-/* Estilos generales */
-body {
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #eaf7ea; /* Color de fondo ambientado en bosques o hierbas medicinales */
-}
-
 .login-container {
-    width: 90%; /* Ancho del contenedor del formulario */
-    max-width: 400px; /* Ancho máximo del contenedor del formulario */
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto; /* Centrado horizontal */
+  height: 100%;
+  width: 90%; /* Ancho del contenedor del formulario */
+  max-width: 400px; /* Ancho máximo del contenedor del formulario */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Centrado horizontal */
 }
 
 label {
-    display: block;
-    margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 input[type="email"],
 input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 .btn-primary {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #00897b; /* Color del botón */
-    color: #fff; /* Color del texto del botón */
-    font-size: 16px;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00897b; /* Color del botón */
+  color: #fff; /* Color del texto del botón */
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .btn-primary:hover {
-    background-color: #00796b; /* Color del botón al pasar el mouse */
+  background-color: #00796b; /* Color del botón al pasar el mouse */
 }

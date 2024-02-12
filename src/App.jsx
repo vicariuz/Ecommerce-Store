@@ -19,18 +19,17 @@ function App() {
   return (
     <Context.Provider value={{ pizza, setPizza, cart, setCart }}>
       <BrowserRouter>
-        <div className='container-app d-flex flex-column align-space-between  '>
+        <div className='container-app d-flex flex-column align-space-between  justify-content-between h-100'>
           <NavBar />
           <Routes>
             {/* PUBLICO */}
             <Route path='/' element={<Home />} />
             <Route path='/pizza/:id' element={<Detail />} />
             <Route path='/cart' element={<Cart />} />
-            <Route path="/login" element={<Login/>} />  {/* JP */}
-            <Route path="/register" element={<Register/>} /> {/* JP */}
-
+            <Route path='/login' element={<Login />} /> {/* JP */}
+            <Route path='/register' element={<Register />} /> {/* JP */}
             {/* PRIVADO */}
-            <Route path="/crear" element={<Crear/>} /> {/* JP */}
+            <Route path='/crear' element={<Crear />} /> {/* JP */}
             <Route path='*' element={<NotFound />} />
           </Routes>
           <Footer />
