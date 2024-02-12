@@ -49,9 +49,9 @@ const NavBar = () => {
                 <h3>Sativgarden</h3>
               </a>
             </li>
-            {/* <li className='nav-item'>
-              <a className='nav-link' href='#'>
-                Link
+            <li className='nav-item'>
+              <a className='nav-link' href=''>
+                Home
               </a>
             </li>
             <li className='nav-item dropdown'>
@@ -62,7 +62,7 @@ const NavBar = () => {
                 data-bs-toggle='dropdown'
                 aria-expanded='false'
               >
-                Dropdown
+                Market
               </a>
               <ul className='dropdown-menu'>
                 <li>
@@ -85,14 +85,9 @@ const NavBar = () => {
                 </li>
               </ul>
             </li>
-            <li className='nav-item'>
-              <a className='nav-link disabled' aria-disabled='true'>
-                Disabled
-              </a>
-            </li> */}
           </ul>
 
-          <div className='d-flex flex-column register'>
+          <div className='d-flex register '>
             <Link to='/login' className=' iniciar text-success me-3'>
               Iniciar Sesión
             </Link>
