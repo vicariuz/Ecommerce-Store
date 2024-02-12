@@ -3,23 +3,36 @@
 import "./Card.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import Context from "../context/context";
+import Context from '../context/context';
+
 const Card = ({ pizza }) => {
-  const { setPizza, setCart } = useContext(Context);
+  const { setPizza, setCart,  } = useContext(Context);
+
+  const renderEstrellas = () => {
+    if (!pizza) return null; 
+
+    const calificacion = parseInt(pizza.rating, 10);
+    
+
+    const estrellas = [];
+    for (let i = 1; i <= 5; i++) {
+      // Cambia la clase 'filled' si la calificación es mayor o igual a i
+      const claseEstrella = calificacion >= i ? 'filled' : '';
+      estrellas.push(<span key={i} className={`estrella ${claseEstrella}`}>★</span>);
+    }
+    return estrellas;
+  };
 
   const navigate = useNavigate();
 
   const handleDetail = (e) => {
     e.preventDefault();
-
     setPizza(pizza);
-
     navigate(`/pizza/${pizza.id}`);
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
-
     setCart((prevCart) => {
       const itemsFound = prevCart.find((item) => item.name === pizza.name);
       if (itemsFound) {
@@ -36,7 +49,7 @@ const Card = ({ pizza }) => {
           {
             img: pizza.img,
             name: pizza.name,
-            price: pizza.price,
+            price: pizza.discountprice,
             qty: 1,
           },
         ];
@@ -47,37 +60,26 @@ const Card = ({ pizza }) => {
   return (
     <div className="card shadow d-flex">
       <img src={pizza.img} alt={pizza.name} />
-      <h2 className="text-capitalize mt-3">{pizza.name}</h2>
-      <strong>
-        <p>Ingredientes :</p>
-      </strong>
-      <ul style={{ listStyleType: "none", padding: 0 }}>
-        {pizza.ingredients.map((ingredient, index) => (
-          <li key={index}>
-            <img
-              src="/img/pizza-svgrepo-com.svg"
-              alt="logo"
-              style={{
-                width: "30px",
-                height: "30px",
-                marginRight: "10px",
-              }}
-            />
-            {ingredient}
-          </li>
-        ))}
-      </ul>
-
+      <p id="subTitulo">{pizza.category}</p>
+      <h2 className="card-title text-capitalize mt-3">{pizza.name}</h2>
       <div className="container-precio d-flex flex-column align-items-center">
         <div className="precio d-flex justify-content-center align-items-center">
-          <p className="text-primary">
-            {pizza.price.toLocaleString("es-CL", {
+          <p className="priceCard1">
+            Now {pizza.discountprice.toLocaleString("es-CL", {
+              style: "currency",
+              currency: "CLP",
+            })}
+          </p> 
+          <p className="priceCard2">
+          {pizza.price.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
             })}
           </p>
         </div>
-
+        <div className="calificacion">
+          <p>({pizza.rating}){renderEstrellas()}</p>
+        </div>
         <div className="d-flex justify-content-evenly w-100">
           <button className="btn btn-success" onClick={handleDetail}>
             <img

@@ -1,0 +1,103 @@
+.container-galeria {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 20px;
+    padding: 2rem;
+  }
+  
+  .welcome {
+    display: flex;
+    flex-direction: column;
+    height: 5vh;
+    text-align: left;
+    color: gray;
+    background-position: 30% 20%;
+   
+  }
+  
+  .home-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Una fila automática para la barra de búsqueda, una fila fr para la galería y una fila automática para el footer */
+    grid-template-columns: 1fr 2fr; /* Dos columnas: una para la barra de filtros y otra para la galería */
+    grid-gap: 20px; /* Espacio entre las áreas */
+    height: 100vh; /* Altura del 100% del viewport */
+  }
+  
+  #textoHolder{
+   width:30rem;
+  }
+  
+  .textHolde{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 1rem;
+  }
+  
+  .textHolde input::placeholder {
+    font-size: 20px;
+  
+  }
+  
+  .circleButton {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background-color: yellow; /* Puedes ajustar el color de fondo según tus preferencias */
+    cursor: pointer;
+    margin-left: 10px; /* Ajusta el margen según sea necesario */
+  }
+  
+  h3{
+    margin: 0.5rem;
+  }
+  
+  .filters-bar {
+  margin-top:3rem;
+  }
+  
+  .search-bar {
+   display: flex;
+   justify-content: center;
+  }
+  
+  .btn{
+  margin-top: 2.5rem;
+  }
+  
+  #responseBack{
+    font-size: 30px;
+  }
+  
+  /* Estilos para pantallas más pequeñas (por ejemplo, móviles) */
+  @media (max-width: 768px) {
+    .home-container {
+      grid-template-rows: 1fr; 
+      grid-template-columns: 1fr; /* Cambia a una sola columna para pantallas más pequeñas */
+      margin-top: 1.8rem;
+    }
+  
+    #textoHolder {
+      width: 15rem; /* Asegurarse de que el campo de búsqueda ocupe el 100% del ancho en pantallas más pequeñas */
+    }
+  
+    .filters-bar {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .container-galeria {
+      display: flex;
+      flex-wrap: wrap; /* Permite que las cartas se envuelvan a la siguiente línea en pantallas más pequeñas */
+      justify-content: space-around; /* Distribuye las cartas equitativamente */
+    }
+  
+    .card {
+      width: 100%; /* Asegurarse de que cada carta ocupe el 100% del ancho disponible */
+      margin-bottom: 20px; /* Espacio entre cartas */
+    }
+    
+    
+  }
+  
