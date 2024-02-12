@@ -38,8 +38,7 @@ const Login = () => {
   };
 
   return (
-    <div className='loginpage'>
-      <h2>Iniciar sesión</h2>
+    <div className='loginpage vh-100  p-5'>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
           <label htmlFor='exampleInputEmail1'>Usuario</label>

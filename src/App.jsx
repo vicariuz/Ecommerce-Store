@@ -18,25 +18,29 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const renderEstrellas = () => {
-    if (!pizza) return null; 
+    if (!pizza) return null;
 
     const calificacion = parseInt(pizza.rating, 10);
-    
 
     const estrellas = [];
     for (let i = 1; i <= 5; i++) {
       // Cambia la clase 'filled' si la calificación es mayor o igual a i
-      const claseEstrella = calificacion >= i ? 'filled' : '';
-      estrellas.push(<span key={i} className={`estrella ${claseEstrella}`}>★</span>);
+      const claseEstrella = calificacion >= i ? "filled" : "";
+      estrellas.push(
+        <span key={i} className={`estrella ${claseEstrella}`}>
+          ★
+        </span>
+      );
     }
     return estrellas;
   };
 
-
   return (
-    <Context.Provider value={{ pizza, setPizza, cart, setCart, renderEstrellas }}>
+    <Context.Provider
+      value={{ pizza, setPizza, cart, setCart, renderEstrellas }}
+    >
       <BrowserRouter>
-        <div className='container-app d-flex flex-column align-space-between  justify-content-between h-100'>
+        <div className='container-app d-flex flex-column align-space-center vh-100'>
           <NavBar />
           <Routes>
             {/* PUBLICO */}

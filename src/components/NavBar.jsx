@@ -40,54 +40,22 @@ const NavBar = () => {
         </button>
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
-            <li className='nav-item'>
-              <a
-                className='nav-link active text-success'
-                aria-current='page'
-                href=' '
-              >
-                <h3>Sativgarden</h3>
-              </a>
+            <li className='nav-item m-2'>
+              <h3 className='text-secondary'>Sativgarden</h3>
             </li>
-            <li className='nav-item'>
-              <a className='nav-link' href=''>
+            <li className='nav-item d-flex m-2'>
+              <Link to='/' className='nav-link active'>
                 Home
-              </a>
-            </li>
-            <li className='nav-item dropdown'>
-              <a
-                className='nav-link dropdown-toggle'
-                href='#'
-                role='button'
-                data-bs-toggle='dropdown'
-                aria-expanded='false'
-              >
-                Market
-              </a>
-              <ul className='dropdown-menu'>
-              <li>
-              <Link to="/gallery" className='dropdown-item'>
-                Productos
               </Link>
-            </li>
-                <li>
-                  <a className='dropdown-item' href='#'>
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className='dropdown-divider' />
-                </li>
-                <li>
-                  <a className='dropdown-item' href='#'>
-                    Something else here
-                  </a>
-                </li>
-              </ul>
+              <li>
+                <Link to='/gallery' className='nav-link active'>
+                  Productos
+                </Link>
+              </li>
             </li>
           </ul>
 
-          <div className='d-flex register '>
+          <div className='d-flex register m-3 '>
             <Link to='/login' className=' iniciar text-success me-3'>
               Iniciar Sesión
             </Link>
@@ -95,7 +63,10 @@ const NavBar = () => {
               Registrarse
             </Link>
           </div>
-          <div className='d-flex cart-icon ' onClick={() => navigate("/cart")}>
+          <div
+            className='d-flex cart-icon mx-3'
+            onClick={() => navigate("/cart")}
+          >
             <img
               src='/img/cart-shopping-fast-svgrepo-com.svg'
               alt=''

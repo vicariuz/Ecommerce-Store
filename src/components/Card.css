@@ -1,10 +1,13 @@
 .card {
-  border: 1px solid #ccc;
+  border-radius: 8px;
   padding: 1.3rem;
   width: 20rem;
-  margin: 1rem;
-  min-height: 20rem;
-  align-items: center;
+  height: 30rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+.card:last-child {
+  margin: 0;
 }
 
 .card img {
@@ -31,7 +34,7 @@
   color: gold; /* O el color que desees para las estrellas llenas */
 }
 
-.calificacion p{
+.calificacion p {
   font-size: 20px;
   justify-content: space-between;
   padding: 1rem;
@@ -45,15 +48,14 @@
   text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto se desborda */
 }
 
-.priceCard1{
+.priceCard1 {
   color: green;
   font-weight: bold;
   font-size: 30px;
   justify-content: center;
 }
 
-.priceCard2{
-  
+.priceCard2 {
   color: gray;
   font-size: 30px;
   justify-content: center;
