@@ -65,11 +65,11 @@ const NavBar = () => {
                 Market
               </a>
               <ul className='dropdown-menu'>
-                <li>
-                  <a className='dropdown-item' href='#'>
-                    Action
-                  </a>
-                </li>
+              <li>
+              <Link to="/gallery" className='dropdown-item'>
+                Productos
+              </Link>
+            </li>
                 <li>
                   <a className='dropdown-item' href='#'>
                     Another action
