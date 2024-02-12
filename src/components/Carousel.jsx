@@ -1,42 +1,47 @@
 import "./Carousel.css";
-const Carousel = () => {
-  return (
-    <div className='carrusel carousel slide'>
-      <div className='carousel-inner'>
-        <div className='carousel-item active'>
-          <img
-            src='https://fastly.picsum.photos/id/1031/200/300.jpg?hmac=HVS-5o6kRugo6EcoZhPEsxm8Jnl7-J5tuEc20pN029c'
-            className='d-block w-100'
-            alt=''
-          />
-        </div>
-        <div className='carousel-item'>
-          <img src='...' className='d-block w-100' alt='...' />
-        </div>
-        <div className='carousel-item'>
-          <img src='...' className='d-block w-100' alt='...' />
-        </div>
-      </div>
-      <button
-        className='carousel-control-prev'
-        type='button'
-        data-bs-target='#carouselExample'
-        data-bs-slide='prev'
-      >
-        <span className='carousel-control-prev-icon' aria-hidden='true'></span>
-        <span className='visually-hidden'>Previous</span>
-      </button>
-      <button
-        className='carousel-control-next'
-        type='button'
-        data-bs-target='#carouselExample'
-        data-bs-slide='next'
-      >
-        <span className='carousel-control-next-icon' aria-hidden='true'></span>
-        <span className='visually-hidden'>Next</span>
-      </button>
-    </div>
-  );
-};
+import Carousel from "react-bootstrap/Carousel";
 
-export default Carousel;
+function Carrousel() {
+  return (
+    <Carousel className=''>
+      <Carousel.Item interval={1000}>
+        <img
+          src='https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68'
+          className='image'
+          alt='...'
+        />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item interval={500}>
+        <img
+          src='https://fastly.picsum.photos/id/15/2500/1667.jpg?hmac=Lv03D1Y3AsZ9L2tMMC1KQZekBVaQSDc1waqJ54IHvo4'
+          className='image'
+          alt='...'
+        />
+
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          src='https://fastly.picsum.photos/id/14/2500/1667.jpg?hmac=ssQyTcZRRumHXVbQAVlXTx-MGBxm6NHWD3SryQ48G-o'
+          className='image'
+          alt='...'
+        />
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+  );
+}
+
+export default Carrousel;
