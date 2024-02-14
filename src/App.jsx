@@ -8,11 +8,11 @@ import Cart from "./views/Cart";
 import NotFound from "./components/NotFound";
 import Detail from "./views/Detail";
 import Context from "./context/context";
+import Contacto from "./views/Contacto";
 import Login from "./views/Login"; // JP
 import Register from "./views/Register"; // JP
 import Crear from "./views/Crear"; // JP
 import { useState } from "react";
-import Contacto from "./views/Contacto";
 
 function App() {
   const [pizza, setPizza] = useState({});
@@ -49,9 +49,9 @@ function App() {
             <Route path='/gallery' element={<Gallery />} />
             <Route path='/pizza/:id' element={<Detail />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/contacto' element={<Contacto />} />
             <Route path='/login' element={<Login />} /> {/* JP */}
             <Route path='/register' element={<Register />} /> {/* JP */}
-            <Route path='/contacto' element={<Contacto />} />
             {/* PRIVADO */}
             <Route path='/crear' element={<Crear />} /> {/* JP */}
             <Route path='*' element={<NotFound />} />

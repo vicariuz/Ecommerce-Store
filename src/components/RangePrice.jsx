@@ -1,9 +1,7 @@
-/* eslint-disable react/prop-types */
-
-import { Form } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Form } from 'react-bootstrap';
 
 const MySlider = ({ onPriceChange }) => {
-  // eslint-disable-next-line no-undef
   const [value, setValue] = useState(10);
 
   const handleSliderChange = (e) => {
@@ -23,20 +21,20 @@ const MySlider = ({ onPriceChange }) => {
 
   const sliderStyles = {
     background: calculateBackgroundGradient(),
-    border: "none",
-    height: "10px",
+    border: 'none',
+    height: '10px',
   };
 
   return (
     <Form>
-      <Form.Group controlId='priceRange'>
+      <Form.Group controlId="priceRange">
         <Form.Label>{formatCurrency(value)}</Form.Label>
         <Form.Control
-          type='range'
+          type="range"
           custom
-          min='0'
-          max='100'
-          step='1'
+          min="0"
+          max="100"
+          step="1"
           value={value}
           onChange={handleSliderChange}
           style={sliderStyles}
