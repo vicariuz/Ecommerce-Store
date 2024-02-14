@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import "./AboutUs.css";
 
 const AboutUs = () => {
   return (
-    <div className='container-fluid mt-5'>
+    <div className='container-fluid mt-5 '>
       <div className='row'>
         <div className='col-md-4'>
           <div className='card'>
@@ -18,9 +19,6 @@ const AboutUs = () => {
                 distribuir Cannabis medicinal con altísimos estándares de
                 calidad entre nuestros pacientes.
               </p>
-              <Link to='/contacto'>
-                <button>Más sobre nosotros</button>
-              </Link>
             </div>
           </div>
         </div>
@@ -71,19 +69,10 @@ const AboutUs = () => {
                   </li>
                 </ul>
 
-                <h5>Más Información:</h5>
-                <ul>
-                  <li>
-                    Para obtener detalles adicionales o si tienes alguna
-                    pregunta, no dudes en contactarnos por correo electrónico:
-                  </li>
-                  <li>
-                    Correo Electrónico:{" "}
-                    <a href='mailto:contacto@sativgarden.cl'>
-                      contacto@sativgarden.cl
-                    </a>
-                  </li>
-                </ul>
+                <h5>Para Más Información:</h5>
+                <Link to='/contacto'>
+                  <button>Más sobre nosotros</button>
+                </Link>
               </p>
             </div>
           </div>
