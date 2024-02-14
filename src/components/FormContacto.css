@@ -1,0 +1,25 @@
+.formulario{
+    margin-top: 2rem;
+    
+}
+
+.row.g-3 {
+    max-width: 800px; /* Puedes ajustar el valor según tus necesidades */
+    margin: 0 auto; /* Centra el formulario en el contenedor */
+  }
+
+  .col-12{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #btn{
+    width: 8rem;
+    justify-content: center;
+  }
+
+  .form-check{
+    justify-content: left;
+    display: flex;
+  }

@@ -1,4 +1,25 @@
-.container-home {
-  display: flex;
-  flex-direction: column;
+.card-container {
+  width: 100%;
+  margin: 0 10px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .about-us {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Additional styles for smaller screens if needed */
+@media screen and (max-width: 480px) {
+  /* Add specific styles for screens smaller than 480px if necessary */
 }

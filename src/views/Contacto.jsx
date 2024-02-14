@@ -1,10 +1,9 @@
-import "./Contacto.css";
-import Formulario from "../components/Formulario";
+import FormContacto from "../components/FormContacto";
 
 const Contacto = () => {
   return (
-    <div className='container-formContacto d-flex vh-100 m-5   '>
-      <Formulario />
+    <div className='container-home d-flex 100-w justify-content-center align-items-center '>
+      <FormContacto />
     </div>
   );
 };

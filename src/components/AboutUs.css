@@ -1,0 +1,9 @@
+.about-us .card-container {
+  border-radius: 8px;
+  padding: 2rem;
+  width: 28rem;
+  background-color: aliceblue;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  align-items: center;
+}

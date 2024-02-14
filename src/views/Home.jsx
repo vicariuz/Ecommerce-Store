@@ -4,7 +4,7 @@ import AboutUs from "../components/AboutUs";
 
 const Home = () => {
   return (
-    <div className='container-home d-flex 100-w     '>
+    <div className='container-home d-flex flex-column w-100 align-items-center   '>
       <Carousel />
       <AboutUs />
     </div>

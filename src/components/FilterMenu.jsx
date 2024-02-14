@@ -1,14 +1,15 @@
+/* eslint-disable react/prop-types */
 import { Accordion, Form } from "react-bootstrap";
 import MySlider from "./RangePrice";
 import MySlider2 from "./RangeRating";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const CheckboxItem = ({ label, onChange }) => {
   return <Form.Check type='checkbox' label={label} onChange={onChange} />;
 };
 
 const FilterMenu = ({ onSelectCategory, onPriceChange, onRatingChange }) => {
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [, setSelectedCategory] = useState("");
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);

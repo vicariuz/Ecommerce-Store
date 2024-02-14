@@ -41,14 +41,14 @@ const NavBar = () => {
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
             <li className='nav-item m-2'>
-              <h3 className='text-secondary'>Sativgarden</h3>
+              <h3 className='text-success'>Sativgarden</h3>
             </li>
             <li className='nav-item d-flex m-2'>
-              <Link to='/' className='nav-link active'>
+              <Link to='/' className='nav-link active home-link'>
                 Home
               </Link>
               <li>
-                <Link to='/gallery' className='nav-link active'>
+                <Link to='/gallery' className='nav-link active producto-link'>
                   Productos
                 </Link>
               </li>

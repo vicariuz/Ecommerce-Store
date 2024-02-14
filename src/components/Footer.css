@@ -1,9 +1,20 @@
 /* Estilos para el footer */
 footer {
-  background-color: #d58080;
+  background-color: #363535;
   color: white; /* Texto blanco */
   text-align: center;
   padding: 20px;
   bottom: 0;
   flex-shrink: 0;
+}
+
+.container-footer {
+  display: flex;
+  justify-content: center;
+}
+
+#contactP {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: white;
 }
