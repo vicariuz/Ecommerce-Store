@@ -76,3 +76,9 @@
     margin-bottom: 2rem;
   }
 }
+
+@media (max-width: 767px) {
+  .card {
+    margin-bottom: 2rem;
+  }
+}
