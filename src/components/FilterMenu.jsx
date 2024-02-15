@@ -20,7 +20,7 @@ const FilterMenu = ({ onSelectCategory, onPriceChange, onRatingChange }) => {
     <div>
       <Accordion>
         <Accordion.Item eventKey='0'>
-          <Accordion.Header>Category</Accordion.Header>
+          <Accordion.Header>Categoria</Accordion.Header>
           <Accordion.Body>
             <CheckboxItem
               label='Flowers'
@@ -33,7 +33,7 @@ const FilterMenu = ({ onSelectCategory, onPriceChange, onRatingChange }) => {
           </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey='1'>
-          <Accordion.Header>Price</Accordion.Header>
+          <Accordion.Header>Precio</Accordion.Header>
           <Accordion.Body>
             <MySlider onPriceChange={onPriceChange} />
           </Accordion.Body>

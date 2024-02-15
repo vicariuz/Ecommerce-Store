@@ -48,10 +48,10 @@ function Carrousel() {
         />
         <Carousel.Caption>
           <h3 className='bg-dark text-light'>
-            "Marihuana Medicinal: Beneficios Terapéuticos en Pocas Palabras"
+            "Cannabis Medicinal: Beneficios Terapéuticos en Pocas Palabras"
           </h3>
           <p className='bg-dark text-light'>
-            La marihuana medicinal, rica en cannabinoides como el THC y el CBD,
+            EL cannabis medicinal, rica en cannabinoides como el THC y el CBD,
             ha demostrado propiedades analgésicas, antiinflamatorias y
             ansiolíticas. Su legalización en diversos lugares se ha centrado en
             ofrecer alivio para condiciones médicas como dolor crónico, náuseas

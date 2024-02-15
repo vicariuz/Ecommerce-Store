@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
+/* eslint-disable react/prop-types */
+import { useState } from "react";
+import { Form } from "react-bootstrap";
 
 const MySlider2 = ({ onRatingChange }) => {
   const [rating, setRating] = useState(3);
@@ -17,20 +18,20 @@ const MySlider2 = ({ onRatingChange }) => {
 
   const sliderStyles = {
     background: calculateBackgroundGradient(),
-    border: 'none',
-    height: '10px',
+    border: "none",
+    height: "10px",
   };
 
   return (
     <Form>
-      <Form.Group controlId="ratingRange">
+      <Form.Group controlId='ratingRange'>
         <Form.Label>{rating}</Form.Label>
         <Form.Control
-          type="range"
+          type='range'
           custom
-          min="1"
-          max="5"
-          step="1"
+          min='1'
+          max='5'
+          step='1'
           value={rating}
           onChange={handleSliderChange}
           style={sliderStyles}
