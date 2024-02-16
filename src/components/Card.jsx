@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import Context from "../context/context";
 
-const Card = ({ pizza }) => {
-  const { setPizza, setCart } = useContext(Context);
+const Card = ({ producto }) => {
+  const { setProducto, setCart } = useContext(Context);
 
   const renderEstrellas = () => {
-    if (!pizza) return null;
+    if (!producto) return null;
 
-    const calificacion = parseInt(pizza.rating, 10);
+    const calificacion = parseInt(producto.rating, 10);
 
     const estrellas = [];
     for (let i = 1; i <= 5; i++) {
@@ -30,17 +30,17 @@ const Card = ({ pizza }) => {
 
   const handleDetail = (e) => {
     e.preventDefault();
-    setPizza(pizza);
-    navigate(`/pizza/${pizza.id}`);
+    setProducto(producto);
+    navigate(`/producto/${producto.id}`);
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
     setCart((prevCart) => {
-      const itemsFound = prevCart.find((item) => item.name === pizza.name);
+      const itemsFound = prevCart.find((item) => item.name === producto.name);
       if (itemsFound) {
         return prevCart.map((item) => {
-          if (item.name === pizza.name) {
+          if (item.name === producto.name) {
             return { ...item, qty: item.qty + 1 };
           } else {
             return item;
@@ -50,9 +50,9 @@ const Card = ({ pizza }) => {
         return [
           ...prevCart,
           {
-            img: pizza.img,
-            name: pizza.name,
-            price: pizza.discountprice,
+            img: producto.img,
+            name: producto.name,
+            price: producto.discountprice,
             qty: 1,
           },
         ];
@@ -62,20 +62,20 @@ const Card = ({ pizza }) => {
 
   return (
     <div className='card shadow d-flex'>
-      <img src={pizza.img} alt={pizza.name} />
-      <p id='subTitulo'>{pizza.category}</p>
-      <h2 className='card-title text-capitalize mt-3'>{pizza.name}</h2>
+      <img src={producto.img} alt={producto.name} />
+      <p id='subTitulo'>{producto.category}</p>
+      <h2 className='card-title text-capitalize mt-3'>{producto.name}</h2>
       <div className='container-precio d-flex flex-column align-items-center'>
         <div className='precio d-flex justify-content-center align-items-center'>
           <p className='priceCard1'>
             Now{" "}
-            {pizza.discountprice.toLocaleString("es-CL", {
+            {producto.discountprice.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
             })}
           </p>
           <p className='priceCard2'>
-            {pizza.price.toLocaleString("es-CL", {
+            {producto.price.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
             })}
@@ -83,7 +83,7 @@ const Card = ({ pizza }) => {
         </div>
         <div className='calificacion'>
           <p>
-            ({pizza.rating}){renderEstrellas()}
+            ({producto.rating}){renderEstrellas()}
           </p>
         </div>
         <div className='d-flex justify-content-evenly w-100 mx-5'>

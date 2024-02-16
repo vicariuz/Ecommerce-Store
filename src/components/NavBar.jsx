@@ -7,9 +7,19 @@ const NavBar = () => {
   const { cart } = useContext(Context);
   const navigate = useNavigate();
 
+  const usuarioGuardado = localStorage.getItem('usuarioAutenticado');
+  const usuarioAutenticado = usuarioGuardado ? JSON.parse(usuarioGuardado) : null;
+
   const total = cart.reduce((acc, curr) => {
     return acc + curr.price * curr.qty;
   }, 0);
+
+  const handleLogout = () => {
+    // Limpiar la información del usuario del localStorage
+    localStorage.removeItem('usuarioAutenticado');
+    // Redirigir a la página de inicio u otra página después de cerrar sesión
+    navigate("/");
+  };
 
   return (
     <nav className='navbar navbar-expand-lg bg-body-tertiary'>
@@ -56,12 +66,28 @@ const NavBar = () => {
           </ul>
 
           <div className='d-flex register m-3 '>
-            <Link to='/login' className=' iniciar text-success me-3'>
-              Iniciar Sesión
-            </Link>
-            <Link to='/register' className='registrarse text-success'>
-              Registrarse
-            </Link>
+            {usuarioAutenticado && usuarioAutenticado.usuario ? (
+              <>
+                <h6 className='registrarse text-success'>Hola, {usuarioAutenticado.usuario}  </h6>
+                {usuarioAutenticado.rol === "Administrador" && (
+                  <Link to='/dashboard' className='registrarse text-success'>
+                    Volver al Dashboard
+                  </Link>
+                )}
+                <Link to='/' className='registrarse text-success' onClick={handleLogout}>
+                  Cerrar Sesión
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to='/login' className=' iniciar text-success me-3'>
+                  Iniciar Sesión
+                </Link>
+                <Link to='/register' className='registrarse text-success'>
+                  Registrarse
+                </Link>
+              </>
+            )}
           </div>
           <div
             className='d-flex cart-icon mx-3'
@@ -87,6 +113,7 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
 
 // return (
 //   <nav className='navbar bg-white px-5 py-3 d-flex justify-content-between navbar-expand-lg navbar-light bg-light'>

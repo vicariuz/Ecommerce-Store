@@ -1,0 +1,23 @@
+.form-container{
+    display: flex;
+    justify-content: center;
+    width: 30rem;
+    height: 58rem;
+    background-color:gray;
+    margin-top: 1rem;
+    align-items: center;
+    margin: auto;
+    border: 1px solid #ccc; /* Un borde sólido de 1 píxel con color gris claro (#ccc) */
+    border-radius: 8px;
+    align-items: center;
+  }
+  
+  .formGroup{
+    margin: 0rem;
+    align-items: center;
+    text-align: center;
+  }
+  
+  #btn2{
+    margin:1rem;
+  }

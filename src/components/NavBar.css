@@ -40,7 +40,10 @@
 }
 .iniciar {
   transition: transform 0.3s ease-in-out;
+  text-decoration: none;
 }
 .registrarse {
   transition: transform 0.3s ease-in-out;
+  margin-left: 3rem;
+  text-decoration: none;
 }

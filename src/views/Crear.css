@@ -43,3 +43,8 @@ form {
     background-color: #00796b;
   }
   
+  #btn1{
+    margin: 0.5rem;
+    align-items: center;
+    
+  }

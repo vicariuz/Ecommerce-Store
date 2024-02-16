@@ -7,7 +7,13 @@ const Register = () => {
   const [fechaNacimiento, setFechaNacimiento] = useState("");
   const [email, setEmail] = useState("");
   const [direccion, setDireccion] = useState("");
+  const [role, setRole] = useState("");
   //   const [recetaMedica, setRecetaMedica] = useState(null);
+
+  const handleRoleChange = (event) => {
+    setRole(event.target.value);
+  };
+
 
   // Función para manejar el envío del formulario
   const handleSubmit = (event) => {
@@ -18,7 +24,6 @@ const Register = () => {
       fechaNacimiento,
       email,
       direccion,
-      recetaMedica,
     });
   };
 
@@ -57,14 +62,19 @@ const Register = () => {
             onChange={(e) => setDireccion(e.target.value)}
           />
         </label>
-        {/* <label>
-        RECETA MEDICA:
-        <input
-          type='file'
-          accept='.pdf, .jpg, .jpeg, .png'
-          onChange={(e) => setRecetaMedica(e.target.files[0])}
-        />
-      </label> */}
+       <div className='form-group'>
+      <label htmlFor='inputState'>Rol</label>
+      <select
+        id='inputState'
+        className='form-select'
+        onChange={handleRoleChange}
+        value={role}
+      >
+        <option value="" disabled>Selecciona un rol</option>
+        <option value="user">Usuario</option>
+        <option value="admin">Administrador</option>
+      </select>
+    </div>
         <button type='submit'>Registrar usuario</button>
       </form>
     </div>
