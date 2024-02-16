@@ -54,26 +54,25 @@ const NavBar = () => {
               <h3 className='text-success'>Sativgarden</h3>
             </li>
             <li className='nav-item d-flex m-2'>
-              <Link to='/' className='nav-link active home-link'>
+                <Link to='/' className='nav-link active home-link'>
                 Home
-              </Link>
-              <li>
-                <Link to='/gallery' className='nav-link active producto-link'>
-                  Productos
                 </Link>
-              </li>
+                <Link to='/gallery' className='nav-link active producto-link'>
+                Productos
+                </Link>
             </li>
           </ul>
 
           <div className='d-flex register m-3 '>
             {usuarioAutenticado && usuarioAutenticado.usuario ? (
-              <>
+              <> 
                 <h6 className='registrarse text-success'>Hola, {usuarioAutenticado.usuario}  </h6>
                 {usuarioAutenticado.rol === "Administrador" && (
                   <Link to='/dashboard' className='registrarse text-success'>
                     Volver al Dashboard
                   </Link>
                 )}
+                
                 <Link to='/' className='registrarse text-success' onClick={handleLogout}>
                   Cerrar Sesión
                 </Link>

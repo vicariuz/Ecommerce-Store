@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import usuariosJSON from '../assets/usuarios.json';
+import usuariosJSON from '../assets/usuarios.json'; // base de prueba para probar la funcionalidad de frontend
+import { useContext } from 'react';
+import userContext from '../context/userContext';
 
 const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser } = useContext(userContext);
 
+  // Estas funciones se utilizan para manejar los cambios en los campos de entrada del usuario y actualizar el estado correspondiente (username y password).
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
@@ -15,7 +19,7 @@ const Login = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
+// Esta función se llama cuando el formulario se envía. Primero, previene el comportamiento predeterminado del formulario usando event.preventDefault(). Luego, realiza validaciones en los campos de entrada y realiza la autenticación del usuario.
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -39,7 +43,7 @@ const Login = () => {
     if (user) {
       // Usuario autenticado correctamente
       localStorage.setItem('usuarioAutenticado', JSON.stringify(user));
-
+      setUser(user);
       // Redirigir a la página correspondiente
       if (user.rol === "Administrador") {
         navigate("/dashboard");
