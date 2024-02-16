@@ -1,0 +1,51 @@
+.dashboard {
+    background-color: white;
+    width: 30rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1), 0px 0px 5px rgba(0, 0, 0, 0.05); /* Sombra más pronunciada */
+    padding: 2rem;
+    transition: box-shadow 0.3s ease; /* Transición suave para el efecto hover */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard:hover {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2), 0px 0px 10px rgba(0, 0, 0, 0.1); /* Efecto hover con sombra más pronunciada */
+}
+
+.dashboard button {
+    width: 15rem;
+    height: 5rem;
+    margin-top: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: green;
+    color: white; /* Color del texto */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: box-shadow 0.3s ease; /* Transición suave para el efecto hover */
+    text-decoration: none;
+
+}
+
+.dashboard button:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efecto hover con sombra más pronunciada */
+}
+
+.link-button {
+    color: inherit; /* Hereda el color del texto del botón */
+    text-decoration: none; /* Elimina la decoración del enlace (subrayado) */
+    display: block; /* Hace que el enlace ocupe todo el ancho del botón */
+    height: 100%; /* Ajusta la altura del enlace al 100% del botón */
+    border: none; /* Quita el borde del enlace */
+    background: none; /* Elimina el fondo del enlace */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
+    text-align: center;
+  }
+  

@@ -27,6 +27,7 @@ input[type="password"] {
   color: #fff; /* Color del texto del botón */
   font-size: 16px;
   cursor: pointer;
+  margin-top: 2rem;
 }
 
 .btn-primary:hover {

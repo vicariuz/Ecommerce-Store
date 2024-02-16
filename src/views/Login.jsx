@@ -1,40 +1,55 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import usuariosJSON from '../assets/usuarios.json';
 
 const Login = () => {
-  // Definir estados para el nombre de usuario y la contraseña
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // Manejar cambios en el campo de nombre de usuario
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
 
-  // Manejar cambios en el campo de contraseña
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 
-  // Manejar envío del formulario de inicio de sesión
   const handleSubmit = (event) => {
     event.preventDefault();
+
     // Validar si se ingresó un usuario y una contraseña
     if (username.trim() === "" || password.trim() === "") {
-      alert("Por favor ingrese un usuario y una contraseña."); // Mostrar mensaje de error si faltan datos
+      alert("Por favor ingrese un usuario y una contraseña.");
       return;
     }
 
     // Validar longitud de la contraseña
     if (password.length < 8) {
-      alert("La contraseña debe tener al menos 8 caracteres."); // Mostrar mensaje de error si la contraseña es corta
+      alert("La contraseña debe tener al menos 8 caracteres.");
       return;
     }
 
-    // Aquí puedes implementar la lógica de autenticación
-    console.log("Usuario:", username, "Contraseña:", password); // Simulación de autenticación
+    // Buscar el usuario en el JSON
+    const user = usuariosJSON.find(
+      (u) => u.usuario === username && u.password === password
+    );
 
-    // Redirecciona a la página deseada dependiendo del estado de isLoggedIn
+    if (user) {
+      // Usuario autenticado correctamente
+      localStorage.setItem('usuarioAutenticado', JSON.stringify(user));
+
+      // Redirigir a la página correspondiente
+      if (user.rol === "Administrador") {
+        navigate("/dashboard");
+      } else {
+        navigate("/");
+      }
+    } else {
+      // Credenciales incorrectas
+      alert("Credenciales incorrectas. Por favor, verifique su usuario y contraseña.");
+    }
   };
 
   return (
@@ -63,7 +78,6 @@ const Login = () => {
             value={password}
           />
         </div>
-
         <button type='submit' className='btn btn-primary'>
           Entrar
         </button>
