@@ -6,14 +6,14 @@ import { useContext } from "react";
 import Context from '../context/context';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const CardAdmin = ({ pizza }) => {
-  const { setPizza  } = useContext(Context);
+const CardAdmin = ({ producto }) => {
+  const { setProducto  } = useContext(Context);
   const navigate = useNavigate();
 
   const renderEstrellas = () => {
-    if (!pizza) return null; 
+    if (!producto) return null; 
 
-    const calificacion = parseInt(pizza.rating, 10);
+    const calificacion = parseInt(producto.rating, 10);
     
 
     const estrellas = [];
@@ -36,49 +36,49 @@ const CardAdmin = ({ pizza }) => {
 
   const handleDetail = (e) => {
     e.preventDefault();
-    setPizza(pizza);
-    navigate(`/pizza/${pizza.id}`);
+    setProducto(producto);
+    navigate(`/producto/${producto.id}`);
   };
 
   return (
     <div className="card shadow d-flex">
-      <img src={pizza.img} alt={pizza.name} />
+      <img src={producto.img} alt={producto.name} />
       <h1 className="card-title text-capitalize mt-3">General Details:</h1>
       <div className="container-precio d-flex flex-column align-items-center">
         <div className="precio d-grid justify-content-center align-items-center">
         <ul>
           <li className="text-primary1">
-            Name: {pizza.name}
+            Name: {producto.name}
           </li>
           <li className="text-primary1">
-            Category: {pizza.category}
+            Category: {producto.category}
           </li>
           <li className="text-primary1">
-            Description: {truncateDescription(pizza.desc, 20)}
+            Description: {truncateDescription(producto.desc, 20)}
             </li>
             <li className="text-primary1">
-            Feelings: {pizza.feelings}
+            Feelings: {producto.feelings}
           </li>
           <li className="text-primary1">
-            Negatives: {pizza.negatives}
+            Negatives: {producto.negatives}
           </li>
           <li className="text-primary1">
-            Helps with: {pizza.helpwith}
+            Helps with: {producto.helpwith}
           </li>
           <li className="text-primary1">
-            Price:{pizza.price.toLocaleString("es-CL", {
+            Price:{producto.price.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
             })}
           </li>
           <li className="text-primary1">
-            Discount Price:{pizza.discountprice.toLocaleString("es-CL", {
+            Discount Price:{producto.discountprice.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
             })}
           </li>
           <li className="text-primary1">
-            Rating: ({pizza.rating}){renderEstrellas()}
+            Rating: ({producto.rating}){renderEstrellas()}
           </li>
           </ul>
         </div>
@@ -86,7 +86,7 @@ const CardAdmin = ({ pizza }) => {
           <button id="btnpubli" className="btn btn-success" onClick={handleDetail}>
             Ver mas
           </button>
-          <Link to={`/edit/${pizza.id}`} className="nav-link active">
+          <Link to={`/edit/${producto.id}`} className="nav-link active">
           <button type="button" className="btn btn-warning mb-4" style={{ display:"flex", width: "100px", height:"80px", justifyContent: "center", alignItems:"center" }}>
             <img
               src="/img/iconmonstr-pencil-square-lined.svg"

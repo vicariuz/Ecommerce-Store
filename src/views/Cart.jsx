@@ -3,7 +3,7 @@ import { useContext } from "react";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
 export default function Cart() {
-  const { cart, setCart, setPizza } = useContext(Context);
+  const { cart, setCart, setProducto } = useContext(Context);
   const navigate = useNavigate();
 
   const total = cart.reduce((acc, curr) => {
@@ -13,16 +13,16 @@ export default function Cart() {
   const handleReset = (e) => {
     e.preventDefault();
     setCart([]);
-    setPizza({});
+    setProducto({});
     navigate("/");
   };
 
-  const handleAdd = (pizza) => {
+  const handleAdd = (producto) => {
     setCart((prevCart) => {
-      const itemsFound = prevCart.find((item) => item.name === pizza.name);
+      const itemsFound = prevCart.find((item) => item.name === producto.name);
       if (itemsFound) {
         return prevCart.map((item) => {
-          if (item.name === pizza.name) {
+          if (item.name === producto.name) {
             return { ...item, qty: item.qty + 1 };
           } else {
             return item;
@@ -32,9 +32,9 @@ export default function Cart() {
         return [
           ...prevCart,
           {
-            img: pizza.img,
-            name: pizza.name,
-            price: pizza.price,
+            img: producto.img,
+            name: producto.name,
+            price: producto.price,
             qty: 1,
           },
         ];
@@ -42,10 +42,10 @@ export default function Cart() {
     });
   };
 
-  const handleRemove = (pizza) => {
+  const handleRemove = (producto) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.map((item) => {
-        if (item.name === pizza.name) {
+        if (item.name === producto.name) {
           if (item.qty > 1) {
             return { ...item, qty: item.qty - 1 };
           } else {
@@ -68,36 +68,36 @@ export default function Cart() {
         </h2>
       </div>
       {cart.length ? (
-        cart.map((pizza) => {
+        cart.map((producto) => {
           return (
-            <div className="sub-container-cart" key={pizza.name}>
+            <div className="sub-container-cart" key={producto.name}>
               <div className="image-container d-flex align-items-center ms-5">
                 <img
-                  src={pizza.img}
-                  alt={pizza.name}
+                  src={producto.img}
+                  alt={producto.name}
                   className="custom-image"
                 />
 
-                <h3 className="ms-5 text-capitalize">{pizza.name}</h3>
+                <h3 className="ms-5 text-capitalize">{producto.name}</h3>
               </div>
               <div className="d-flex align-items-center ">
                 <div className="me-5 text-primary  ">
                   <h3>
-                    {(pizza.price * pizza.qty).toLocaleString("es-CL", {
+                    {(producto.price * producto.qty).toLocaleString("es-CL", {
                       style: "currency",
                       currency: "CLP",
                     })}
                   </h3>
                 </div>
                 <button
-                  onClick={() => handleRemove(pizza)}
+                  onClick={() => handleRemove(producto)}
                   className="red-button m-3"
                 >
                   -
                 </button>
-                <div className="pizza-quantity m-3">{pizza.qty}</div>
+                <div className="producto-quantity m-3">{producto.qty}</div>
                 <button
-                  onClick={() => handleAdd(pizza)}
+                  onClick={() => handleAdd(producto)}
                   className="blue-button m-3 me-5"
                 >
                   +

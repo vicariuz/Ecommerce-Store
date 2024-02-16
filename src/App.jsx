@@ -19,13 +19,13 @@ import { useState } from "react";
 
 
 function App() {
-  const [pizza, setPizza] = useState({});
+  const [producto, setProducto] = useState({});
   const [cart, setCart] = useState([]);
 
   const renderEstrellas = () => {
-    if (!pizza) return null;
+    if (!producto) return null;
 
-    const calificacion = parseInt(pizza.rating, 10);
+    const calificacion = parseInt(producto.rating, 10);
 
     const estrellas = [];
     for (let i = 1; i <= 5; i++) {
@@ -42,7 +42,7 @@ function App() {
 
   return (
     <Context.Provider
-      value={{ pizza, setPizza, cart, setCart, renderEstrellas }}
+      value={{ producto, setProducto, cart, setCart, renderEstrellas }}
     >
       <BrowserRouter>
         <div className='container-app d-flex flex-column align-space-center vh-100'>
@@ -51,7 +51,7 @@ function App() {
             {/* PUBLICO */}
             <Route path='/' element={<Home />} />
             <Route path='/gallery' element={<Gallery />} />
-            <Route path='/pizza/:id' element={<Detail />} />
+            <Route path='/producto/:id' element={<Detail />} />
        
             <Route path='/cart' element={<Cart />} />
             <Route path='/contacto' element={<Contacto />} />

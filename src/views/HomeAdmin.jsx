@@ -1,12 +1,12 @@
 // En HomeAdmin.jsx o donde renderices las cartas para el administrador
-import pizzasData from "../assets/pizzas.json";
+import productoData from "../assets/products.json";
 import CardAdmin from "../components/CardAdmin";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const HomeAdmin = () => {
-  // Supongamos que allPizzas es una prop o un estado que contiene la lista completa de pizzas
-  const allPizzas = pizzasData; // Mostrar todas las pizzas directamente
+  // Supongamos que allProducts es una prop o un estado que contiene la lista completa de productos
+  const allProductos = productoData; // Mostrar todas los productos directamente
 
   return (
   
@@ -15,8 +15,8 @@ const HomeAdmin = () => {
     <Link to='/dashboard' className="link-button"> Volver a Dashboard</Link>
         </button>
     <div id="cartas-container" className='d-flex flex-wrap justify-content-center align-items-center p-3'>
-            {allPizzas.map((pizza) => (
-              <CardAdmin pizza={pizza} key={pizza.id} />
+            {allProductos.map((producto) => (
+              <CardAdmin producto={producto} key={producto.id} />
             ))}
           </div>
     </div>

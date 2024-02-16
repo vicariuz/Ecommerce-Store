@@ -81,7 +81,7 @@ const Gallery = () => {
         className='d-flex flex-wrap justify-content-center align-items-center p-3'
       >
         {filteredProducts.length > 0 ? (
-          filteredProducts.map((pizza) => <Card pizza={pizza} key={pizza.id} />)
+          filteredProducts.map((producto) => <Card producto={producto} key={producto.id} />)
         ) : (
           <p id='callback' className='text-light'>
             No se encontraron resultados para tu búsqueda
