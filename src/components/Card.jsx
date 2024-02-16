@@ -86,7 +86,7 @@ const Card = ({ pizza }) => {
             ({pizza.rating}){renderEstrellas()}
           </p>
         </div>
-        <div className='d-flex justify-content-evenly w-100'>
+        <div className='d-flex justify-content-evenly w-100 mx-5'>
           <button className='btn btn-success' onClick={handleDetail}>
             <img
               src='/img/eyes-svgrepo-com.svg'
