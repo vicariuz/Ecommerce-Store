@@ -1,0 +1,19 @@
+.card {
+    border: 1px solid #ccc;
+    padding: 1.3rem;
+    width: 30rem;
+    margin: 1rem;
+    min-height: 20rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card img {
+    max-width: 60%;
+    height: auto;
+    align-items: center;
+  }
+  .container-precio {
+    font-size: 20px;
+  }
+  

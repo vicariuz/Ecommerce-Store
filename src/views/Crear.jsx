@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import "./Crear.css";
-
+import { Link } from 'react-router-dom';
 
 const Crear = () => {
     // Definir los estados para los valores de los inputs
@@ -48,6 +48,11 @@ const Crear = () => {
                         <input type="text" value={imagen} onChange={(e) => setImagen(e.target.value)} />
                     </label>
                     <button type="submit">Registrar producto</button>
+                    <Link to="/dashboard">
+                    <button id="btn1" type="submit">
+                        Volver a Dashboard
+                        </button>
+                        </Link>
                 </form>
         </div>
     );
