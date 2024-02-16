@@ -14,15 +14,14 @@ const Crear = () => {
     // Función para manejar el envío del formulario
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Aquí puedes agregar la lógica para enviar los datos del producto al servidor
+        // lógica para enviar los datos del producto al servidor
         console.log('Datos del producto:', { nombre, descripcion, precio, stock, categoria, imagen });
     };
 
     return (
-        <div>
-           
-                <form onSubmit={handleSubmit}>
-                    <h1>Registrar Producto</h1>
+        <div >
+                <form onSubmit={handleSubmit} >
+                    <h2>Registrar Producto</h2>
                     <label>
                         Nombre del producto:
                         <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
@@ -49,10 +48,8 @@ const Crear = () => {
                     </label>
                     <button type="submit">Registrar producto</button>
                     <Link to="/dashboard">
-                    <button id="btn1" type="submit">
-                        Volver a Dashboard
-                        </button>
-                        </Link>
+                    <button id="btn1" type="submit">Volver a Dashboard </button>
+                    </Link>
                 </form>
         </div>
     );
