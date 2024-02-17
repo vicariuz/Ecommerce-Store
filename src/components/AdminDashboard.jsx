@@ -7,7 +7,7 @@ const AdminDashboard = () => {
     return (
         <div className="dashboard">
             <form>
-                <h4>Dasboard Administrador</h4>
+                <h4>Dashboard Administrador</h4>
                 <b>Explora tus opciones:</b>
               <button type="button" className="btn btn-secondary btn-lg">
               <Link to='/galleryadmin' className="link-button">Galery y Editar Publicaciones</Link>
