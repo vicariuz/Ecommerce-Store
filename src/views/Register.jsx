@@ -8,6 +8,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [direccion, setDireccion] = useState("");
   const [role, setRole] = useState("");
+  const [password, setPassword] = useState("");
   //   const [recetaMedica, setRecetaMedica] = useState(null);
 
   const handleRoleChange = (event) => {
@@ -24,6 +25,7 @@ const Register = () => {
       fechaNacimiento,
       email,
       direccion,
+      password
     });
   };
 
@@ -41,9 +43,17 @@ const Register = () => {
         <label>
           FECHA NACIMIENTO:
           <input
-            type='text'
+            type='date'
             value={fechaNacimiento}
             onChange={(e) => setFechaNacimiento(e.target.value)}
+          />
+        </label>
+        <label>
+          DIRECCIÓN:
+          <input
+            type='text'
+            value={direccion}
+            onChange={(e) => setDireccion(e.target.value)}
           />
         </label>
         <label>
@@ -55,11 +65,11 @@ const Register = () => {
           />
         </label>
         <label>
-          DIRECCIÓN:
+          PASSWORD:
           <input
-            type='text'
-            value={direccion}
-            onChange={(e) => setDireccion(e.target.value)}
+            type='password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
        <div className='form-group'>
