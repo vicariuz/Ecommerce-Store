@@ -1,24 +1,20 @@
-/* Estilos para el footer */
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 footer {
   background-color: #363535;
-  color: white; /* Texto blanco */
+  color: white;
   text-align: center;
   padding: 20px;
-  bottom: 0;
-  flex-shrink: 0;
-  
-}
-
-.container-footer{
-  display: flex;
-  justify-content: center;
-
-}
-
-#contactP{
-  margin-left:1rem;
-  text-decoration: none;
-  color: white;
+  margin-top: auto;
 }
 
 .container-footer {

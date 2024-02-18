@@ -1,49 +1,40 @@
 .navbar {
   width: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   z-index: 99;
 }
 
-.cart-icon {
-  cursor: pointer;
-}
-.logo:hover {
-  transition: transform 0.3s ease-in-out;
-}
-.logo:hover {
-  transform: scale(1.3);
-}
-.iniciar:hover {
-  transform: scale(1.3);
-}
-.home-link:hover {
-  transition: transform 0.3s ease-in-out;
-}
-.home-link:hover {
-  transform: scale(1.3);
-}
-.producto-link:hover {
-  transform: scale(1.3);
-}
-.producto-link:hover {
+.cart-icon,
+.logo,
+.home-link,
+.registrarse {
   transition: transform 0.3s ease-in-out;
 }
 
-.cart-icon {
-  transition: transform 0.3s ease-in-out;
+.logo:hover,
+.home-link:hover,
+.producto-link:hover,
+.cart-icon:hover,
+.registrarse:hover,
+.iniciar:hover {
+  transform: scale(1.3);
 }
-.cart-icon:hover {
-  transform: scale(1.2);
+
+.logo {
+  margin-right: 20px;
 }
-.registrarse:hover {
-  transform: scale(1.2);
-}
-.iniciar {
-  transition: transform 0.3s ease-in-out;
-  text-decoration: none;
-}
+
 .registrarse {
-  transition: transform 0.3s ease-in-out;
-  margin-left: 3rem;
+  margin-left: 20px;
   text-decoration: none;
+}
+
+.iniciar {
+  text-decoration: none;
+}
+
+.btn-danger {
+  white-space: nowrap;
 }

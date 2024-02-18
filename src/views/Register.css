@@ -41,9 +41,9 @@ button[type="submit"] {
   color: #fff; /* Color del texto del botón */
   font-size: 16px;
   cursor: pointer;
+  margin-top: 1.5rem;
 }
 
 button[type="submit"]:hover {
   background-color: #00796b; /* Color del botón al pasar el mouse */
 }
-
