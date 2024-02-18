@@ -5,7 +5,7 @@ import "./App.css";
 // login user
 import ProtectedRoute from "./components/ProtectedRoute";
 import userContext from "./context/userContext";
-import Login from "./views/Login"; 
+import Login from "./views/Login";
 
 // crear usuario
 import Register from "./views/Register";
@@ -31,9 +31,9 @@ import EditDetail from "./views/EditDetail";
 function App() {
   const [producto, setProducto] = useState({});
   const [cart, setCart] = useState([]);
-  
+
   //------------------------------------- setuser
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   //------------------------------------- galery
   const renderEstrellas = () => {
@@ -55,9 +55,9 @@ function App() {
   };
 
   return (
-    <userContext.Provider value={{user, setUser}}>
+    <userContext.Provider value={{ user, setUser }}>
       <Context.Provider
-        value={{ producto, setProducto, cart, setCart, renderEstrellas}}
+        value={{ producto, setProducto, cart, setCart, renderEstrellas }}
       >
         <BrowserRouter>
           <div className='container-app d-flex flex-column align-space-center vh-100'>
@@ -67,20 +67,20 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/gallery' element={<Gallery />} />
               <Route path='/producto/:id' element={<Detail />} />
-        
+
               <Route path='/cart' element={<Cart />} />
               <Route path='/contacto' element={<Contacto />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               {/* PRIVADO */}
-              <Route element={<ProtectedRoute></ProtectedRoute>} >  
-                  <Route path='/galleryadmin' element={<HomeAdmin />} /> 
-                  <Route path="/edit/:id" element={<EditDetail />} />
-                  <Route path='/dashboard' element={<Dashboard />} /> 
-                  <Route path='/crear' element={<Crear />} />
-                  <Route path='/admindashboard' element={<AdminDashboard />} /> 
-                  <Route path='/homeadmin' element={<HomeAdmin />} /> 
-                  <Route path='*' element={<NotFound />} />
+              <Route element={<ProtectedRoute></ProtectedRoute>}>
+                <Route path='/galleryAdmin' element={<HomeAdmin />} />
+                <Route path='/edit/:id' element={<EditDetail />} />
+                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/crear' element={<Crear />} />
+                <Route path='/adminDashboard' element={<AdminDashboard />} />
+                <Route path='/homeAdmin' element={<HomeAdmin />} />
+                <Route path='*' element={<NotFound />} />
               </Route>
             </Routes>
             <Footer />
