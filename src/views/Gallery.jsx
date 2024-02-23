@@ -1,19 +1,43 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import "./Gallery.css";
 import Card from "../components/Card";
 import productsData from "../assets/products.json";
 import FilterMenu from "../components/FilterMenu";
+import userContext from "../context/userContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Gallery = () => {
+  const { user } = useContext(userContext);
+
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [priceFilter, setPriceFilterState] = useState(100);
   const [ratingFilter, setRatingFilter] = useState(5);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  const localStorageUser = localStorage.getItem("usuarioAutenticado");
+  const navigate = useNavigate();
+
   useEffect(() => {
     updateFilteredResults();
   }, [searchText, selectedCategory, priceFilter, ratingFilter]); // Dependencias actualizadas
+
+  useEffect(() => {
+    checkLogin();
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    const fetchedProducts = await axios.get("http://localhost:3000/usuarios");
+    console.log(fetchedProducts);
+  };
+
+  const checkLogin = async () => {
+    if (!user && !localStorageUser) navigate("/login");
+    console.log("user", user);
+  };
 
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
@@ -81,7 +105,9 @@ const Gallery = () => {
         className='d-flex flex-wrap justify-content-center align-items-center p-3'
       >
         {filteredProducts.length > 0 ? (
-          filteredProducts.map((producto) => <Card producto={producto} key={producto.id} />)
+          filteredProducts.map((producto) => (
+            <Card producto={producto} key={producto.id} />
+          ))
         ) : (
           <p id='callback' className='text-light'>
             No se encontraron resultados para tu búsqueda

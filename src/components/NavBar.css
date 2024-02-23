@@ -22,6 +22,10 @@
   transform: scale(1.3);
 }
 
+.pending {
+  pointer-events: none;
+}
+
 .logo {
   margin-right: 20px;
 }
