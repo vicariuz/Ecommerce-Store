@@ -7,7 +7,7 @@ export default function Cart() {
   const navigate = useNavigate();
 
   const total = cart.reduce((acc, curr) => {
-    return acc + curr.price * curr.qty;
+    return acc + curr.p_precio * curr.qty;
   }, 0);
 
   const handleReset = (e) => {
@@ -19,10 +19,10 @@ export default function Cart() {
 
   const handleAdd = (producto) => {
     setCart((prevCart) => {
-      const itemsFound = prevCart.find((item) => item.name === producto.name);
+      const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
       if (itemsFound) {
         return prevCart.map((item) => {
-          if (item.name === producto.name) {
+          if (item.p_name === producto.p_name) {
             return { ...item, qty: item.qty + 1 };
           } else {
             return item;
@@ -32,9 +32,9 @@ export default function Cart() {
         return [
           ...prevCart,
           {
-            img: producto.img,
-            name: producto.name,
-            price: producto.price,
+            p_img: producto.p_img,
+            p_name: producto.p_name,
+            p_precio: producto.p_precio,
             qty: 1,
           },
         ];
@@ -45,7 +45,7 @@ export default function Cart() {
   const handleRemove = (producto) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.map((item) => {
-        if (item.name === producto.name) {
+        if (item.p_name === producto.p_name) {
           if (item.qty > 1) {
             return { ...item, qty: item.qty - 1 };
           } else {
@@ -73,8 +73,8 @@ export default function Cart() {
             <div className="sub-container-cart" key={producto.name}>
               <div className="image-container d-flex align-items-center ms-5">
                 <img
-                  src={producto.img}
-                  alt={producto.name}
+                  src={producto.p_img}
+                  alt={producto.p_name}
                   className="custom-image"
                 />
 
@@ -83,7 +83,7 @@ export default function Cart() {
               <div className="d-flex align-items-center ">
                 <div className="me-5 text-primary  ">
                   <h3>
-                    {(producto.price * producto.qty).toLocaleString("es-CL", {
+                    {(producto.p_precio * producto.qty).toLocaleString("es-CL", {
                       style: "currency",
                       currency: "CLP",
                     })}

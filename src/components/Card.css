@@ -54,7 +54,7 @@
   text-align: center;
 }
 
-.priceCard1 {
+.p_precioCard1 {
   color: green;
   font-weight: bold;
   font-size: 30px;
@@ -62,7 +62,7 @@
   margin-top: 1rem;
 }
 
-.priceCard2 {
+.p_precioCard2 {
   color: gray;
   font-size: 30px;
   justify-content: center;

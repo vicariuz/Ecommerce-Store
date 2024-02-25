@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+// Card.jsx //Galeria de Card
 import "./Card.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -37,10 +38,10 @@ const Card = ({ producto }) => {
   const handleAdd = (e) => {
     e.preventDefault();
     setCart((prevCart) => {
-      const itemsFound = prevCart.find((item) => item.name === producto.name);
+      const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
       if (itemsFound) {
         return prevCart.map((item) => {
-          if (item.name === producto.name) {
+          if (item.p_name === producto.p_name) {
             return { ...item, qty: item.qty + 1 };
           } else {
             return item;
@@ -50,9 +51,9 @@ const Card = ({ producto }) => {
         return [
           ...prevCart,
           {
-            img: producto.img,
-            name: producto.name,
-            price: producto.discountprice,
+            p_img: producto.p_img,
+            p_name: producto.p_name,
+            p_precio: producto.p_descuento,
             qty: 1,
           },
         ];
@@ -62,20 +63,20 @@ const Card = ({ producto }) => {
 
   return (
     <div className='card shadow d-flex'>
-      <img src={producto.img} alt={producto.name} />
-      <p id='subTitulo'>{producto.category}</p>
-      <h2 className='card-title text-capitalize mt-3'>{producto.name}</h2>
+      <img src={producto.p_img} alt={producto.p_name} />
+      <p id='subTitulo'>{producto.p_category}</p>
+      <h2 className='card-title text-capitalize mt-3'>{producto.p_name}</h2>
       <div className='container-precio d-flex flex-column align-items-center'>
         <div className='precio d-flex justify-content-center align-items-center'>
-          <p className='priceCard1'>
+          <p className='p_precioCard1'>
             Now{" "}
-            {producto.discountprice.toLocaleString("es-CL", {
+            {producto.p_descuento.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
             })}
           </p>
-          <p className='priceCard2'>
-            {producto.price.toLocaleString("es-CL", {
+          <p className='p_precioCard2'>
+            {producto.p_precio.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
             })}

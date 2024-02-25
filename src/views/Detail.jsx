@@ -10,10 +10,10 @@ export default function Detail() {
     e.preventDefault();
 
     setCart((prevCart) => {
-      const itemsFound = prevCart.find((item) => item.name === producto.name);
+      const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
       if (itemsFound) {
         return prevCart.map((item) => {
-          if (item.name === producto.name) {
+          if (item.p_name === producto.p_name) {
             return { ...item, qty: item.qty + 1 };
           } else {
             return item;
@@ -23,9 +23,9 @@ export default function Detail() {
         return [
           ...prevCart,
           {
-            img: producto.img,
-            name: producto.name,
-            price: producto.discountprice,
+            p_img: producto.p_img,
+            p_name: producto.p_name,
+            p_precio: producto.p_descuento,
             qty: 1,
           },
         ];
@@ -40,12 +40,12 @@ export default function Detail() {
        d-flex align-items-center 
         "
       >
-        <img src={producto.img} alt={producto.name} className="img-producto me-5  " />
+        <img src={producto.p_img} alt={producto.p_name} className="img-producto me-5  " />
 
         <div className="">
-          <h2 className=" text-capitalize mb-3 ">{producto.name}</h2>
-          <p id = "subtitulo">About this product:</p>
-          <p className="pe-5">{producto.desc}</p>
+          <h2 className=" text-capitalize mb-3 ">{producto.p_name}</h2>
+          <p id = "subtitulo">Informacion del Producto:</p>
+          <p className="pe-5">{producto.p_desc}</p>
           <strong>
             <p>STRAIN HIGHLIGHTS:</p>
           </strong>
@@ -57,7 +57,7 @@ export default function Detail() {
               /> 
               <h6>Feelings:</h6>
               <div className="feelingcontainer">
-              {producto.feelings}
+              {producto.p_feelings}
               </div>
           </div>
           <div className="feelingsSt">
@@ -68,7 +68,7 @@ export default function Detail() {
               /> 
               <h6>Negatives:</h6>
               <div className="negativecontainer">
-              {producto.negatives}
+              {producto.p_negatives}
               </div>
           </div>
           <div className="feelingsSt">
@@ -79,7 +79,7 @@ export default function Detail() {
               /> 
               <h6>Helps with:</h6>
               <div className="helpcontainer">
-              {producto.helpwith}
+              {producto.p_helpwith}
               </div>
           </div>
           <div className="d-flex justify-content-between align-items-center">
@@ -90,7 +90,7 @@ export default function Detail() {
             <div className="precioPost">
               <h6>Starting at</h6>
             <h5 className="textPrice">
-              {producto.price.toLocaleString("es-CL", {
+              {producto.p_precio.toLocaleString("es-CL", {
                 style: "currency",
                 currency: "CLP",
               })}

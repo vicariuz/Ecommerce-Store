@@ -13,7 +13,7 @@ const CardAdmin = ({ producto }) => {
   const renderEstrellas = () => {
     if (!producto) return null; 
 
-    const calificacion = parseInt(producto.rating, 10);
+    const calificacion = parseInt(producto.p_rating, 10);
     
 
     const estrellas = [];
@@ -37,56 +37,59 @@ const CardAdmin = ({ producto }) => {
   const handleDetail = (e) => {
     e.preventDefault();
     setProducto(producto);
-    navigate(`/producto/${producto.id}`);
+    navigate(`/producto/${producto.producto_id}`);
   };
 
   return (
     <div className="card shadow d-flex">
-      <img src={producto.img} alt={producto.name} />
-      <h1 className="card-title text-capitalize mt-3">General Details:</h1>
+      <img src={producto.p_img} alt={producto.p_name} />
+      <h1 className="card-title text-capitalize mt-3">Detalle General</h1>
       <div className="container-precio d-flex flex-column align-items-center">
         <div className="precio d-grid justify-content-center align-items-center">
         <ul>
           <li className="text-primary1">
-            Name: {producto.name}
+            Nombre: {producto.p_name}
           </li>
           <li className="text-primary1">
-            Category: {producto.category}
+            Categoria: {producto.p_category}
           </li>
           <li className="text-primary1">
-            Description: {truncateDescription(producto.desc, 20)}
+            Descripción: {truncateDescription(producto.p_descripcion, 20)}
             </li>
             <li className="text-primary1">
-            Feelings: {producto.feelings}
+            Feelings: {producto.p_feelings}
           </li>
           <li className="text-primary1">
-            Negatives: {producto.negatives}
+            Negatives: {producto.p_negatives}
           </li>
           <li className="text-primary1">
-            Helps with: {producto.helpwith}
+            Helps with: {producto.p_helpwith}
           </li>
           <li className="text-primary1">
-            Price:{producto.price.toLocaleString("es-CL", {
+            Precio:{producto.p_precio.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
             })}
           </li>
+
           <li className="text-primary1">
-            Discount Price:{producto.discountprice.toLocaleString("es-CL", {
-              style: "currency",
-              currency: "CLP",
-            })}
+            Rating: ({producto.p_rating}){renderEstrellas()}
+          </li>
+
+          <li className="text-primary1">
+              Stock: {producto.p_stock} unidades
           </li>
           <li className="text-primary1">
-            Rating: ({producto.rating}){renderEstrellas()}
+            Rating: ({producto.p_rating}){renderEstrellas()}
           </li>
+
           </ul>
         </div>
         <div className="d-flex justify-content-evenly w-100">
           <button id="btnpubli" className="btn btn-success" onClick={handleDetail}>
             Ver mas
           </button>
-          <Link to={`/edit/${producto.id}`} className="nav-link active">
+          <Link to={`/edit/${producto.producto_id}`} className="nav-link active">
           <button type="button" className="btn btn-warning mb-4" style={{ display:"flex", width: "100px", height:"80px", justifyContent: "center", alignItems:"center" }}>
             <img
               src="/img/iconmonstr-pencil-square-lined.svg"
