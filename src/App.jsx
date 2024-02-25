@@ -1,3 +1,4 @@
+//App.jsx
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
@@ -27,6 +28,9 @@ import AdminDashboard from "./components/AdminDashboard";
 import Crear from "./views/Crear";
 import HomeAdmin from "./views/HomeAdmin";
 import EditDetail from "./views/EditDetail";
+
+// integrar a la base de datos
+//const {VITE_APP_URL} = import.meta.end;
 
 function App() {
   const [producto, setProducto] = useState({});

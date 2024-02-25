@@ -36,39 +36,38 @@ const AboutUs = () => {
 
       <div className='card-container'>
         <h5 className='card-title mb-4'>Requisitos para ser miembro:</h5>
-        <p className='card-text'>
-          <ul>
-            <li>Receta Médica Cannábica</li>
-            <li>Certificado de Antecedente</li>
-            <li>Cédula de Identidad (ambos lados)</li>
-            <li>Receta Médica Cannábica</li>
-          </ul>
-          <h5>Proceso de Inscripción:</h5>
-          <ul>
-            <li>Reúne los documentos mencionados.</li>
-            <li>Envía tus documentos por e-mail{" "}
-              <a href='mailto:contacto@sativgarden.cl'>
-                incripcion@sativgarden.cl
-              </a>
-            </li>
-          </ul>
-          <h5>Más Información:</h5>
-          <ul>
-            <li>
-              Para obtener detalles adicionales o si tienes alguna pregunta, no
-              dudes en contactarnos por correo electrónico:
-            </li>
-            <li>
-              Correo Electrónico:{" "}
-              <a href='mailto:contacto@sativgarden.cl'>
-                contacto@sativgarden.cl
-              </a>
-            </li>
-          </ul>
-        </p>
+        <ul className='card-text'>
+          <li>Receta Médica Cannábica</li>
+          <li>Certificado de Antecedente</li>
+          <li>Cédula de Identidad (ambos lados)</li>
+          <li>Receta Médica Cannábica</li>
+        </ul>
+        <h5>Proceso de Inscripción:</h5>
+        <ul className='card-text'>
+          <li>Reúne los documentos mencionados.</li>
+          <li>Envía tus documentos por e-mail{" "}
+            <a href='mailto:contacto@sativgarden.cl'>
+              incripcion@sativgarden.cl
+            </a>
+          </li>
+        </ul>
+        <h5>Más Información:</h5>
+        <ul className='card-text'>
+          <li>
+            Para obtener detalles adicionales o si tienes alguna pregunta, no
+            dudes en contactarnos por correo electrónico:
+          </li>
+          <li>
+            Correo Electrónico:{" "}
+            <a href='mailto:contacto@sativgarden.cl'>
+              contacto@sativgarden.cl
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   );
 };
 
 export default AboutUs;
+

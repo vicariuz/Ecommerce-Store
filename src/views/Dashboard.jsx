@@ -1,17 +1,17 @@
+// Dashboard.jsx
 import AdminDashboard from "../components/AdminDashboard";
-import userContext from "../context/userContext";
+import UserContext from "../context/userContext";
 import { useContext } from "react";
 
 const Dashboard = () => {
-  const {user} = useContext(userContext)
+  const {user} = useContext(UserContext)
 
     return (
       <div className='container-home d-flex 100-w justify-content-center align-items-center '>
-        {user && user.username}
+        {user && user.nombre}
         <AdminDashboard /> 
       </div>
     );
   };
   
   export default Dashboard;
-  //

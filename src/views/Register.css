@@ -3,7 +3,7 @@
 /* Ajuste de ancho y márgenes para dispositivos móviles */
 form {
   width: 90%; /* Hacer que el formulario ocupe el 90% del ancho de la pantalla */
-  max-width: 350px; /* Limitar el ancho máximo del formulario */
+  max-width: 450px; /* Limitar el ancho máximo del formulario */
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
@@ -11,26 +11,29 @@ form {
   margin: 0 auto; /* Centrado horizontal */
 }
 
-/* Ajuste de estilos para etiquetas y entradas en dispositivos móviles */
-label {
-  display: block;
-  margin-bottom: 10px;
-}
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="date"] {
+    width: 90%; /* Ajuste del ancho al 90% */
+    padding: 7px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
 
-input[type="text"],
-input[type="email"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-input[type="file"] {
-  margin-bottom: 20px;
-}
+  input[type="text"]#direccion,
+  input[type="text"]#nombre {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
 
 button[type="submit"] {
   width: 100%;
@@ -39,11 +42,23 @@ button[type="submit"] {
   border-radius: 5px;
   background-color: #00897b; /* Color del botón */
   color: #fff; /* Color del texto del botón */
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   margin-top: 1.5rem;
 }
 
 button[type="submit"]:hover {
   background-color: #00796b; /* Color del botón al pasar el mouse */
+}
+
+/* */
+.formsel-group.col {
+  display: flex;
+ 
+}
+
+
+
+.validation-message {
+  margin-left: 10px; /* Ajusta el margen izquierdo */
 }

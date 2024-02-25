@@ -2,22 +2,23 @@ import { Link, useNavigate } from "react-router-dom";
 import "../components/NavBar.css";
 import { useContext } from "react";
 import Context from "../context/context";
+import UserContext from "../context/userContext";
 
 const NavBar = () => {
   const { cart } = useContext(Context);
   const navigate = useNavigate();
+  const { user, setUser } = useContext(UserContext);
 
-  const usuarioGuardado = localStorage.getItem('usuarioAutenticado');
-  const usuarioAutenticado = usuarioGuardado ? JSON.parse(usuarioGuardado) : null;
-
-  const total = cart.reduce((acc, curr) => {
-    return acc + curr.price * curr.qty;
+    const total = cart.reduce((acc, curr) => {
+    return acc + curr.p_precio * curr.qty;
   }, 0);
 
   const handleLogout = () => {
     // Limpiar la información del usuario del localStorage
-    localStorage.removeItem('usuarioAutenticado');
-    // Redirigir a la página de inicio u otra página después de cerrar sesión
+    localStorage.removeItem("nombre");
+    localStorage.removeItem("rol");
+    setUser(null);
+    // Redirigir a la página de inicio después de cerrar sesión
     navigate("/");
   };
 
@@ -52,10 +53,10 @@ const NavBar = () => {
   
   <div className='d-flex align-items-center'>
     <div className='d-flex align-items-center ms-3'>
-      {usuarioAutenticado && usuarioAutenticado.usuario ? (
+      {user ? (
         <> 
-          <h6 className='registrarse text-success mb-2 me-5'>Hola, {usuarioAutenticado.usuario}</h6>
-          {usuarioAutenticado.rol === "Administrador" && (
+          <h6 className='registrarse text-success mb-2 me-5'>Hola, {user.nombre}</h6>
+          {user.rol === "Administrador" && (
             <Link to='/dashboard' className='btn btn-secondary mb-2 me-2'>
               Volver al Dashboard
             </Link>
@@ -100,58 +101,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-
-// return (
-//   <nav className='navbar bg-white px-5 py-3 d-flex justify-content-between navbar-expand-lg navbar-light bg-light'>
-//     {" "}
-//     <div className='d-flex align-items-center '>
-//       <div className='logo'>
-//         <Link to='/' className='nav-link active'>
-//           <img
-//             src='\img\hand-drawn-weed-cartoon-illustration_23-2150561424.svg'
-//             alt='logo'
-//             style={{
-//               width: "70px",
-//               height: "70px",
-//               marginRight: "10px",
-//             }}
-//           />
-//         </Link>
-//       </div>
-//       <div className='tituloNav'>
-//         <h3 className='text-success font-weight-bold ms-3 custom-h3 '>
-//           {" "}
-//           Sativgarden
-//         </h3>
-//       </div>
-//     </div>
-//     <div className=' text-success d-flex align-items-center cursor-pointer me-3'>
-//       <div className='d-flex flex-column register'>
-//         <Link to='/login' className='text-success me-3'>
-//           Iniciar Sesión
-//         </Link>
-//         <Link to='/register' className='text-success'>
-//           Registrarse
-//         </Link>
-//       </div>
-//       <div className='d-flex cart-icon ' onClick={() => navigate("/cart")}>
-//         <img
-//           src='/img/cart-shopping-fast-svgrepo-com.svg'
-//           alt=''
-//           style={{ width: "30px", height: "30px", marginRight: "10px" }}
-//         />
-//         <h4>
-//           total :{" "}
-//           {total.toLocaleString("es-CL", {
-//             style: "currency",
-//             currency: "CLP",
-//           })}{" "}
-//         </h4>
-//       </div>
-//     </div>
-//   </nav>
-// );
-// };
-
-// export default NavBar;

@@ -1,60 +1,71 @@
+//login.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import usuariosJSON from '../assets/usuarios.json'; // base de prueba para probar la funcionalidad de frontend
+//import usuariosJSON from '../assets/usuarios.json'; // base de prueba para probar la funcionalidad de frontend
 import { useContext } from 'react';
-import userContext from '../context/userContext';
+import UserContext from '../context/userContext';
+import axios from "axios";
+
+const { VITE_APP_URL } = import.meta.env;
 
 const Login = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUser } = useContext(userContext);
+  const { setUser } = useContext(UserContext);
 
-  // Estas funciones se utilizan para manejar los cambios en los campos de entrada del usuario y actualizar el estado correspondiente (username y password).
+  // Estas funciones se utilizan para manejar los cambios en los campos de entrada del usuario y actualizar el estado correspondiente (email y password).
   const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 // Esta función se llama cuando el formulario se envía. Primero, previene el comportamiento predeterminado del formulario usando event.preventDefault(). Luego, realiza validaciones en los campos de entrada y realiza la autenticación del usuario.
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
     // Validar si se ingresó un usuario y una contraseña
-    if (username.trim() === "" || password.trim() === "") {
+    if (email.trim() === "" || password.trim() === "") {
       alert("Por favor ingrese un usuario y una contraseña.");
       return;
     }
-
+    
     // Validar longitud de la contraseña
     if (password.length < 8) {
       alert("La contraseña debe tener al menos 8 caracteres.");
       return;
     }
 
+    // Frontend - envio de credenciales al backend
+    try {
+      const response = await axios.post(`${VITE_APP_URL}/login`, {
+        email,
+        password,
+      });
+
+      const user = response.data; // Obtener el usuario de la respuesta
+      
     // Buscar el usuario en el JSON
-    const user = usuariosJSON.find(
-      (u) => u.usuario === username && u.password === password
-    );
+    //const user = usuariosJSON.find(
+    //  (u) => u.usuario ===  email && u.password === password
+    //);
 
     if (user) {
-      // Usuario autenticado correctamente
-      localStorage.setItem('usuarioAutenticado', JSON.stringify(user));
-      setUser(user);
-      // Redirigir a la página correspondiente
-      if (user.rol === "Administrador") {
-        navigate("/dashboard");
-      } else {
-        navigate("/");
-      }
-    } else {
-      // Credenciales incorrectas
+      localStorage.setItem("nombre", user.nombre);
+      localStorage.setItem("rol", user.rol);setUser(user);
+      navigate(user.rol === "Administrador" ? "/dashboard" : "/");       
+      } else {  // Credenciales incorrectas
       alert("Credenciales incorrectas. Por favor, verifique su usuario y contraseña.");
     }
-  };
+  } catch (error) {
+    // Manejar errores de la solicitud HTTP
+    console.error('Error al realizar la solicitud:', error);
+    alert('Ocurrió un error al iniciar sesión. Por favor, intenta nuevamente.');
+  }
+};
 
   return (
     <div className='loginpage vh-100  p-5'>
@@ -68,7 +79,7 @@ const Login = () => {
             aria-describedby='emailHelp'
             placeholder='Ingrese su email'
             onChange={handleUsernameChange}
-            value={username}
+            value={email}
           />
         </div>
         <div className='form-group'>

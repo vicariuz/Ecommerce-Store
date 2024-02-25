@@ -27,7 +27,7 @@ const MySlider = ({ onPriceChange }) => {
 
   return (
     <Form>
-      <Form.Group controlId="priceRange">
+      <Form.Group controlId="p_precioRange">
         <Form.Label>{formatCurrency(value)}</Form.Label>
         <Form.Control
           type="range"

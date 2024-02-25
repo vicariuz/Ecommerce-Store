@@ -65,7 +65,7 @@ const UpdateProduct = () => {
             Price:
             <input
               type="number"
-              name="price"
+              name="p_precio"
             />
           </label>
         </div>
@@ -74,7 +74,7 @@ const UpdateProduct = () => {
             Discount Price:
             <input
               type="number"
-              name="discountprice"
+              name="p_descuento"
             />
           </label>
         </div>
