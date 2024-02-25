@@ -43,7 +43,7 @@ function App() {
   const renderEstrellas = () => {
     if (!producto) return null;
 
-    const calificacion = parseInt(producto.rating, 10);
+    const calificacion = parseInt(producto.p_rating, 10);
 
     const estrellas = [];
     for (let i = 1; i <= 5; i++) {

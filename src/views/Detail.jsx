@@ -85,7 +85,7 @@ export default function Detail() {
           <div className="d-flex justify-content-between align-items-center">
             <div className="rating">
               <h5>Rating:</h5>
-            <p>{renderEstrellas()}{producto.rating}</p>
+            <p>{renderEstrellas()}{producto.p_rating}</p>
             </div>
             <div className="precioPost">
               <h6>Starting at</h6>

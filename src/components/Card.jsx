@@ -12,7 +12,7 @@ const Card = ({ producto }) => {
   const renderEstrellas = () => {
     if (!producto) return null;
 
-    const calificacion = parseInt(producto.rating, 10);
+    const calificacion = parseInt(producto.p_rating, 10);
 
     const estrellas = [];
     for (let i = 1; i <= 5; i++) {
@@ -84,7 +84,7 @@ const Card = ({ producto }) => {
         </div>
         <div className='calificacion'>
           <p>
-            ({producto.rating}){renderEstrellas()}
+            ({producto.p_rating}){renderEstrellas()}
           </p>
         </div>
         <div className='d-flex justify-content-evenly w-100 mx-5'>
