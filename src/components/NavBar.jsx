@@ -1,51 +1,29 @@
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../components/NavBar.css";
 import { useContext } from "react";
 import Context from "../context/context";
-<<<<<<< HEAD
-import userContext from "../context/userContext";
-=======
 import UserContext from "../context/userContext";
->>>>>>> jp
 
 const NavBar = () => {
-  const { user, setUser } = useContext(userContext);
   const { cart } = useContext(Context);
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
-<<<<<<< HEAD
-  const localStorageUser = localStorage.getItem("usuarioAutenticado");
-  const usuarioAutenticado = localStorageUser
-    ? JSON.parse(localStorageUser)
-    : null;
-
   const total = cart.reduce((acc, curr) => {
-    return acc + curr.price * curr.qty;
-=======
-    const total = cart.reduce((acc, curr) => {
-    return acc + curr.p_precio * curr.qty;
->>>>>>> jp
+    return acc + curr.price * curr.qty; // Utiliza el precio y la cantidad del primer código
   }, 0);
 
   const handleLogout = () => {
     // Limpiar la información del usuario del localStorage
-<<<<<<< HEAD
-    localStorage.removeItem("usuarioAutenticado");
-    setUser({});
-    // Redirigir a la página de inicio u otra página después de cerrar sesión
-=======
     localStorage.removeItem("nombre");
     localStorage.removeItem("rol");
     setUser(null);
     // Redirigir a la página de inicio después de cerrar sesión
->>>>>>> jp
     navigate("/");
   };
 
   return (
     <nav className='navbar navbar-expand-lg bg-body-tertiary'>
-<<<<<<< HEAD
       <div className='d-flex justify-content-between align-items-center w-100 m-3'>
         <div className='d-flex align-items-center'>
           <div className='logo me-3'>
@@ -58,43 +36,6 @@ const NavBar = () => {
                   height: "70px",
                 }}
               />
-=======
-<div className='d-flex justify-content-between align-items-center w-100 m-3'>
-  <div className='d-flex align-items-center'>
-    <div className='logo me-3'>
-      <Link to='/' className='nav-link active'>
-        <img
-          src='\img\hand-drawn-weed-cartoon-illustration_23-2150561424.svg'
-          alt='logo'
-          style={{
-            width: "70px",
-            height: "70px",
-          }}
-        />
-      </Link>
-    </div>
-    <h3 className='text-success m-0'>Sativgarden</h3>
-    <ul className='navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center'>
-      <li className='nav-item d-flex m-2'>
-        <Link to='/' className='nav-link active home-link'>
-          Home
-        </Link>
-        <Link to='/gallery' className='nav-link active producto-link'>
-          Productos
-        </Link>
-      </li>
-    </ul>
-  </div>
-  
-  <div className='d-flex align-items-center'>
-    <div className='d-flex align-items-center ms-3'>
-      {user ? (
-        <> 
-          <h6 className='registrarse text-success mb-2 me-5'>Hola, {user.nombre}</h6>
-          {user.rol === "Administrador" && (
-            <Link to='/dashboard' className='btn btn-secondary mb-2 me-2'>
-              Volver al Dashboard
->>>>>>> jp
             </Link>
           </div>
           <h3 className='text-success m-0'>Sativgarden</h3>
@@ -103,35 +44,24 @@ const NavBar = () => {
               <Link to='/' className='nav-link active home-link'>
                 Home
               </Link>
-              <NavLink
-                to='/gallery'
-                className={`nav-link producto-link ${
-                  user && localStorageUser ? "active" : "pending"
-                }`}
-              >
+              <Link to='/gallery' className='nav-link active producto-link'>
                 Productos
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </div>
-
+      
         <div className='d-flex align-items-center'>
           <div className='d-flex align-items-center ms-3'>
-            {usuarioAutenticado && usuarioAutenticado.usuario ? (
-              <>
-                <h6 className='registrarse text-success mb-2 me-5'>
-                  Hola, {usuarioAutenticado.usuario}
-                </h6>
-                {usuarioAutenticado.rol === "Administrador" && (
+            {user ? (
+              <> 
+                <h6 className='registrarse text-success mb-2 me-5'>Hola, {user.nombre}</h6>
+                {user.rol === "Administrador" && (
                   <Link to='/dashboard' className='btn btn-secondary mb-2 me-2'>
                     Volver al Dashboard
                   </Link>
                 )}
-                <Link
-                  to='/'
-                  className='btn btn-danger mb-2 me-2'
-                  onClick={handleLogout}
-                >
+                <Link to='/' className='btn btn-danger mb-2 me-2' onClick={handleLogout}>
                   Cerrar Sesión
                 </Link>
               </>
@@ -169,8 +99,4 @@ const NavBar = () => {
   );
 };
 
-<<<<<<< HEAD
 export default NavBar;
-=======
-export default NavBar;
->>>>>>> jp

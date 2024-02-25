@@ -1,18 +1,14 @@
 // Gallery.jsx
 import { useState, useEffect } from "react";
-import axios from "axios";
 import "./Gallery.css";
 import Card from "../components/Card";
 //import productosData from "../assets/productos.json";
 import FilterMenu from "../components/FilterMenu";
-<<<<<<< HEAD
 import userContext from "../context/userContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-=======
 import axios from "axios";
 const { VITE_APP_URL } = import.meta.env;
->>>>>>> jp
 
 const Gallery = () => {
   const { user } = useContext(userContext);
@@ -35,23 +31,11 @@ const Gallery = () => {
     updateFilteredResults();
   }, [searchText, selectedCategory, precioFilter, ratingFilter, productosData]); // Dependencias actualizadas
 
-<<<<<<< HEAD
   useEffect(() => {
     checkLogin();
-    fetchProducts();
+    fetchData();
   }, []);
 
-  const fetchProducts = async () => {
-    const fetchedProducts = await axios.get("http://localhost:3000/usuarios");
-    console.log(fetchedProducts);
-  };
-
-  const checkLogin = async () => {
-    if (!user && !localStorageUser) navigate("/login");
-    console.log("user", user);
-  };
-
-=======
   const fetchData = async () => {
 
     // Llamada al backend GET de lista total de productos
@@ -62,11 +46,13 @@ const Gallery = () => {
       console.error("Error al obtener los datos del backend:", error);
     }
   };
-  
 
+  const checkLogin = async () => {
+    if (!user && !localStorageUser) navigate("/login");
+    console.log("user", user);
+  };
 
-   // Filtros
->>>>>>> jp
+  // Filtros
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
   };
