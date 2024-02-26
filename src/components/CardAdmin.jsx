@@ -5,6 +5,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import Context from '../context/context';
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+const { VITE_APP_URL } = import.meta.env;
 
 const CardAdmin = ({ producto }) => {
   const { setProducto  } = useContext(Context);
@@ -15,7 +17,6 @@ const CardAdmin = ({ producto }) => {
 
     const calificacion = parseInt(producto.p_rating, 10);
     
-
     const estrellas = [];
     for (let i = 1; i <= 5; i++) {
       // Cambia la clase 'filled' si la calificación es mayor o igual a i
@@ -40,6 +41,24 @@ const CardAdmin = ({ producto }) => {
     navigate(`/producto/${producto.producto_id}`);
   };
 
+  // Borrar producto ini
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(`${VITE_APP_URL}/productos/${producto.producto_id}`);
+      if (response.status === 200 || response.status === 204) {
+        console.log("Producto eliminado con éxito");
+        navigate('/dashboard');
+      } else {
+        console.error("Error al eliminar el producto. Estado de la respuesta:", response.status);
+      }
+    } catch (error) {
+      console.error("Error al eliminar el producto:", error);
+    }
+  };
+  // Borrar producto end
+
+
+
   return (
     <div className="card shadow d-flex">
       <img src={producto.p_img} alt={producto.p_name} />
@@ -48,7 +67,7 @@ const CardAdmin = ({ producto }) => {
         <div className="precio d-grid justify-content-center align-items-center">
         <ul>
           <li className="text-primary1">
-            Nombre: {producto.p_name}
+            Nombre: {producto.p_name},{producto.producto_id}
           </li>
           <li className="text-primary1">
             Categoria: {producto.p_category}
@@ -73,7 +92,7 @@ const CardAdmin = ({ producto }) => {
           </li>
 
           <li className="text-primary1">
-            Rating: ({producto.p_rating}){renderEstrellas()}
+            Precio con Descto: {producto.p_descuento}
           </li>
 
           <li className="text-primary1">
@@ -99,7 +118,7 @@ const CardAdmin = ({ producto }) => {
            Editar
           </button>
         </Link>
-          <button id="btnpubli" className="btn btn-success">
+          <button id="btnpubli" className="btn btn-success" onClick={handleDelete}>
             Borrar
           </button>
         </div>

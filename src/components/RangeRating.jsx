@@ -1,3 +1,5 @@
+//RangeRating.jsx
+
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Form } from "react-bootstrap";
@@ -6,9 +8,10 @@ const MySlider2 = ({ onRatingChange }) => {
   const [rating, setRating] = useState(3);
 
   const handleSliderChange = (e) => {
-    console.log("Slider Value:", e.target.value);
-    setRating(parseInt(e.target.value, 10));
-    onRatingChange(parseInt(e.target.value, 10)); // Llama a la función proporcionada en las props
+    const newRating = parseInt(e.target.value, 10);
+    console.log("Slider Value:", newRating);
+    setRating(newRating);
+    onRatingChange(newRating); // Llama a la función proporcionada en las props
   };
 
   const calculateBackgroundGradient = () => {
@@ -24,7 +27,9 @@ const MySlider2 = ({ onRatingChange }) => {
 
   return (
     <Form>
-      <Form.Group controlId='ratingRange'>
+      <
+Form.Group
+ controlId='ratingRange'>
         <Form.Label>{rating}</Form.Label>
         <Form.Control
           type='range'
@@ -41,4 +46,4 @@ const MySlider2 = ({ onRatingChange }) => {
   );
 };
 
-export default MySlider2;
+export default MySlider2; 
