@@ -1,12 +1,15 @@
 //UpdateProduct.jsx
 import "./UpdateProduct.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 const { VITE_APP_URL } = import.meta.env;
+
 
 const UpdateProduct = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [productoData, setProductoData] = useState({
     p_name: "",
     p_descripcion: "",
@@ -21,13 +24,15 @@ const UpdateProduct = () => {
     p_img: "",
   });
 
+
   const fetchData = async () => {
     try {
       const response = await axios.get(`${VITE_APP_URL}/productos/${id}`);
-      setProductoData(response.data.producto);
-    } catch (error) {
+      const firstProduct = response.data.producto[0];
+      setProductoData(firstProduct);  
+      } catch (error) {
       console.error("Error al obtener los datos del backend:", error);
-    }
+      }
   };
 
   useEffect(() => {
@@ -51,7 +56,7 @@ const UpdateProduct = () => {
     
     // Alerta de éxito si la solicitud fue exitosa
     alert("Cambios guardados exitosamente.");
-    
+    navigate('/homeAdmin');
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
     }
@@ -61,7 +66,7 @@ const UpdateProduct = () => {
       
       <form>
         <div className="formGroup">
-        <h5>Editar Publicacion N° ID {id}</h5>
+        <h5>Editar Publicacion N° ID {id} </h5>
           <label>
             Nombre:
             <input
