@@ -15,7 +15,7 @@ const Gallery = () => {
 
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [precioFilter, setPrecioFilterState] = useState(1000);
+  const [priceFilter, setPriceFilterState] = useState(1000);
   const [ratingFilter, setRatingFilter] = useState(5); //limite 5
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [productosData, setProductosData] = useState([]);
@@ -29,7 +29,7 @@ const Gallery = () => {
 
   useEffect(() => {
     updateFilteredResults();
-  }, [searchText, selectedCategory, precioFilter, ratingFilter, productosData]); // Dependencias actualizadas
+  }, [searchText, selectedCategory, priceFilter, ratingFilter, productosData]); // Dependencias actualizadas
 
   useEffect(() => {
     checkLogin();
@@ -73,7 +73,7 @@ const Gallery = () => {
   };
 
   const setPrecioFilter = (p_precio) => {
-    setPrecioFilterState(p_precio);
+    setPriceFilterState(p_precio);
   };
 
   const handleRatingChange = (minRating) => {
@@ -86,7 +86,7 @@ const Gallery = () => {
         product.p_name.toLowerCase().includes(searchText.toLowerCase()) &&
         (selectedCategory === "" ||
           product.p_category.toLowerCase() === selectedCategory.toLowerCase()) &&
-        product.p_precio <= precioFilter &&
+        product.p_precio <= parseFloat(priceFilter) &&
         product.p_rating <= ratingFilter
     );
 

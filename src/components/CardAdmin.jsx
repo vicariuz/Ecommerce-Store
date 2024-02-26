@@ -62,12 +62,12 @@ const CardAdmin = ({ producto }) => {
   return (
     <div className="card shadow d-flex">
       <img src={producto.p_img} alt={producto.p_name} />
-      <h1 className="card-title text-capitalize mt-3">Detalle General</h1>
+      <h1 className="card-title text-capitalize mt-3">Detalle General N° ID {producto.producto_id}</h1>
       <div className="container-precio d-flex flex-column align-items-center">
         <div className="precio d-grid justify-content-center align-items-center">
         <ul>
           <li className="text-primary1">
-            Nombre: {producto.p_name},{producto.producto_id}
+            Nombre: {producto.p_name}
           </li>
           <li className="text-primary1">
             Categoria: {producto.p_category}
@@ -105,20 +105,20 @@ const CardAdmin = ({ producto }) => {
           </ul>
         </div>
         <div className="d-flex justify-content-evenly w-100">
-          <button id="btnpubli" className="btn btn-success" onClick={handleDetail}>
+          <button id="btnpubli1" className="btn btn-success" onClick={handleDetail}>
             Ver mas
           </button>
           <Link to={`/edit/${producto.producto_id}`} className="nav-link active">
-          <button type="button" className="btn btn-warning mb-4" style={{ display:"flex", width: "100px", height:"80px", justifyContent: "center", alignItems:"center" }}>
-            <img
-              src="/img/iconmonstr-pencil-square-lined.svg"
-              alt=""
-              style={{ width: "30px", height: "50px", marginRight: "5px" }}
-            />{" "}
-           Editar
-          </button>
-        </Link>
-          <button id="btnpubli" className="btn btn-success" onClick={handleDelete}>
+            <button type="button" className="btn btn-warning mb-4" style={{ display:"flex", width: "100px", height:"70px", justifyContent: "center", alignItems:"center" }}>
+              <img
+                src="/img/iconmonstr-pencil-square-lined.svg"
+                alt=""
+                style={{ width: "30px", height: "50px", marginRight: "5px" }}
+              />{" "}
+            Editar
+            </button>
+          </Link>
+          <button id="btnpubli2" className="btn btn-success" onClick={handleDelete}>
             Borrar
           </button>
         </div>

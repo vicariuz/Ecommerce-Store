@@ -8,16 +8,22 @@
     align-items: center;
     margin: auto;
     border: 1px solid #ccc; /* Un borde sólido de 1 píxel con color gris claro (#ccc) */
-    border-radius: 8px;
-    align-items: center;
+    border-radius: 8px;  
+
   }
   
   .formGroup{
     margin: 0rem;
     align-items: center;
-    text-align: center;
+    padding: 0px;
   }
   
   #btn2{
     margin:1rem;
   }
+
+  .formGroup label {
+    margin-bottom: 5px; /* Reduce el margen inferior del label */
+    margin: 0rem;
+    padding: 0px;
+}

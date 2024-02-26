@@ -1,15 +1,15 @@
-form {
+.form-crear {
   max-width: 400px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 5px;
   background-color: #ecf0f3;
-  border-radius: 15px;
+  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 input[type="text"],
@@ -17,7 +17,7 @@ input[type="number"],
 textarea {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
