@@ -49,6 +49,7 @@ const handleSubmit = async (event) => {
 
         if (response.data.nombre === p_name) {
             console.log('Producto creado exitosamente');
+            window.alert("Producto creado exitosamente");
             // Redirigir a la página de dashboard
             navigate("/dashboard");
         } else {

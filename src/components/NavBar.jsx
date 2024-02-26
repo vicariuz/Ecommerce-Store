@@ -10,7 +10,7 @@ const NavBar = () => {
   const { user, setUser } = useContext(UserContext);
 
   const total = cart.reduce((acc, curr) => {
-    return acc + curr.price * curr.qty; // Utiliza el precio y la cantidad del primer código
+    return acc + curr.p_precio * curr.qty; // Utiliza el precio y la cantidad del primer código
   }, 0);
 
   const handleLogout = () => {

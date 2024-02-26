@@ -15,7 +15,7 @@ const Gallery = () => {
 
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [priceFilter, setPriceFilterState] = useState(1000);
+  const [priceFilter, setPriceFilterState] = useState(100);
   const [ratingFilter, setRatingFilter] = useState(5); //limite 5
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [productosData, setProductosData] = useState([]);

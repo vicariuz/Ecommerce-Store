@@ -24,11 +24,11 @@ const FilterMenu = ({ onSelectCategory, onPriceChange, onRatingChange }) => {
           <Accordion.Body>
             <CheckboxItem
               label='Flores'
-              onChange={() => handleCategoryChange("Flowers")}
+              onChange={() => handleCategoryChange("Flores")}
             />
             <CheckboxItem
               label='Accessorios'
-              onChange={() => handleCategoryChange("Accessories")}
+              onChange={() => handleCategoryChange("Accessorios")}
             />
           </Accordion.Body>
         </Accordion.Item>

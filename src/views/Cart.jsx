@@ -10,13 +10,16 @@ export default function Cart() {
     return acc + curr.p_precio * curr.qty;
   }, 0);
 
-  const handleReset = (e) => {
+
+  // modulo de pago
+  const handlePagar = (e) => {
     e.preventDefault();
     setCart([]);
     setProducto({});
-    navigate("/");
+    navigate("/gallery");
   };
 
+  
   const handleAdd = (producto) => {
     setCart((prevCart) => {
       const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
@@ -70,7 +73,7 @@ export default function Cart() {
       {cart.length ? (
         cart.map((producto) => {
           return (
-            <div className="sub-container-cart" key={producto.name}>
+            <div className="sub-container-cart" key={producto.p_name}>
               <div className="image-container d-flex align-items-center ms-5">
                 <img
                   src={producto.p_img}
@@ -78,7 +81,7 @@ export default function Cart() {
                   className="custom-image"
                 />
 
-                <h3 className="ms-5 text-capitalize">{producto.name}</h3>
+                <h3 className="ms-5 text-capitalize">{producto.p_name}</h3>
               </div>
               <div className="d-flex align-items-center ">
                 <div className="me-5 text-primary  ">
@@ -119,7 +122,7 @@ export default function Cart() {
           })}
         </p>
       </div>
-      <button onClick={handleReset} className="pagar-button mb-5">
+      <button onClick={handlePagar} className="pagar-button mb-5">
         ir a pagar
       </button>
     </div>

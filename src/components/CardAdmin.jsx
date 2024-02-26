@@ -47,6 +47,7 @@ const CardAdmin = ({ producto }) => {
       const response = await axios.delete(`${VITE_APP_URL}/productos/${producto.producto_id}`);
       if (response.status === 200 || response.status === 204) {
         console.log("Producto eliminado con éxito");
+        window.alert("Producto eliminado con éxito");
         navigate('/dashboard');
       } else {
         console.error("Error al eliminar el producto. Estado de la respuesta:", response.status);
