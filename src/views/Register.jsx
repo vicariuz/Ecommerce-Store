@@ -9,13 +9,12 @@ const { VITE_APP_URL } = import.meta.env;
 const Register = () => {
   // Definir estados para los valores de los inputs y sus estados de validación
   const [nombre, setNombre] = useState({ value: "", valid: false });
-  const [fechaNacimiento, setFechaNacimiento] = useState({
+  const [fechanacimiento, setFechanacimiento] = useState({
     value: "",
     valid: false,
   });
   const [email, setEmail] = useState({ value: "", valid: false });
   const [direccion, setDireccion] = useState({ value: "", valid: false });
-  const [rol, setRol] = useState({ value: "", valid: false });
   const [password, setPassword] = useState({ value: "", valid: false });
   const [, setFormValid] = useState(false);
   const navigate = useNavigate();
@@ -25,35 +24,33 @@ const Register = () => {
     event.preventDefault();
     console.log(
       nombre.valid,
-      fechaNacimiento.valid,
+      fechanacimiento.valid,
       email.valid,
       direccion.valid,
-      rol.valid,
       password.valid
     );
     // Validar que todos los campos estén llenos
     if (
       !nombre.valid ||
-      !fechaNacimiento.valid ||
+      !fechanacimiento.valid ||
       !email.valid ||
       !direccion.valid ||
-      !rol.valid ||
       !password.valid
     ) {
       return;
     }
 
-    // Frontend - envio de datos para crear usuario
+    // Frontend - envío de datos para crear usuario
     try {
       const response = await axios.post(`${VITE_APP_URL}/usuarios`, {
         nombre: nombre.value,
-        fechaNacimiento: new Date(fechaNacimiento.value)
+        fechanacimiento: new Date(fechanacimiento.value)
           .toISOString()
           .split("T")[0],
         email: email.value,
         direccion: direccion.value,
         password: password.value,
-        rol: rol.value,
+        rol: "usuario", // Valor fijo para el rol
       });
 
       console.log("Usuario creado:", response.data);
@@ -63,10 +60,9 @@ const Register = () => {
       navigate("/login");
 
       setNombre({ value: "", valid: false });
-      setFechaNacimiento({ value: "", valid: false });
+      setFechanacimiento({ value: "", valid: false });
       setEmail({ value: "", valid: false });
       setDireccion({ value: "", valid: false });
-      setRol({ value: "", valid: false });
       setPassword({ value: "", valid: false });
       setFormValid(false);
     } catch (error) {
@@ -78,10 +74,9 @@ const Register = () => {
 
     // Limpiar los campos después de enviar el formulario
     setNombre({ value: "", valid: false });
-    setFechaNacimiento({ value: "", valid: false });
+    setFechanacimiento({ value: "", valid: false });
     setEmail({ value: "", valid: false });
     setDireccion({ value: "", valid: false });
-    setRol({ value: "", valid: false });
     setPassword({ value: "", valid: false });
     setFormValid(false);
   };
@@ -94,11 +89,11 @@ const Register = () => {
     setNombre({ value, valid: isValid });
   };
 
-  const validateFechaNacimiento = (value) => {
+  const validateFechanacimiento = (value) => {
     console.log(value);
     const regex = /^\d{4}-\d{2}-\d{2}$/;
     const isValid = regex.test(value);
-    setFechaNacimiento({ value, valid: isValid });
+    setFechanacimiento({ value, valid: isValid });
   };
 
   const validateEmail = (value) => {
@@ -120,21 +115,6 @@ const Register = () => {
     setPassword({ value, valid: isValid });
   };
 
-
-
-  // Verificar si el formulario es válido
-  // const checkFormValidity = () => {
-  //   const isRolValid = rol.value === "Usuario" || rol.value === "Administrador";
-  //   setFormValid(
-  //     nombre.valid &&
-  //       fechaNacimiento.valid &&
-  //       email.valid &&
-  //       direccion.valid &&
-  //       password.valid &&
-  //       isRolValid
-  //   );
-  // };
-
   // Función para calcular la edad a partir de la fecha de nacimiento
   const calcularEdad = (fecha) => {
     const hoy = new Date();
@@ -146,7 +126,7 @@ const Register = () => {
     }
     return edad;
   };
-  // console.log(user);
+
   return (
     <div className='vh-100 p-4'>
       <form className='custom-form' onSubmit={handleSubmit}>
@@ -175,11 +155,11 @@ const Register = () => {
                 type='date'
                 id='fechanacimiento'
                 placeholder='Ingresar datos'
-                value={fechaNacimiento.value}
-                onChange={(e) => validateFechaNacimiento(e.target.value)}
+                value={fechanacimiento.value}
+                onChange={(e) => validateFechanacimiento(e.target.value)}
               />
-              {fechaNacimiento.valid ? (
-                calcularEdad(fechaNacimiento.value) >= 18 ? (
+              {fechanacimiento.valid ? (
+                calcularEdad(fechanacimiento.value) >= 18 ? (
                   <span className='validation-message'>✔</span>
                 ) : (
                   <span className='validation-message' style={{ color: "red" }}>
@@ -248,40 +228,20 @@ const Register = () => {
               )}
             </label>
           </div>
-          <div className='formsel-group col'>
-            <label htmlFor='rol' className='labelselec-flex'></label>
-            <select
-              id='rol'
-              className='form-select'
-              value={rol.value}
-              style={{ width: "90%" }}
-            >
-              <option  >
-                Selecciona un rol
-              </option>
-              <option value='user'>Usuario</option>
-            </select>
-            {rol.valid ? (
-              <span className='validation-message'>✔</span>
-            ) : (
-              <span className='validation-message'></span>
-            )}
-          </div>
         </div>
 
         <button
           className={`btn ${
             nombre.valid &&
-            fechaNacimiento.valid &&
+            fechanacimiento.valid &&
             email.valid &&
             direccion.valid &&
-            password.valid &&
-            rol.valid
+            password.valid 
               ? "btn-primary"
               : "disabled"
           }`}
           type='submit'
-          disabled={true}
+          disabled={false}
         >
           Registrar usuario
         </button>

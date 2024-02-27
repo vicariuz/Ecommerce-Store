@@ -55,12 +55,12 @@ const NavBar = () => {
             {user ? (
               <> 
                 <h6 className='registrarse text-success mb-2 me-5'>Hola, {user.nombre}</h6>
-                {user.rol === "Administrador" && (
+                {user.rol === "administrador" && (
                   <Link to='/dashboard' className='btn btn-secondary mb-2 me-2'>
                     Volver al Dashboard
                   </Link>
                 )}
-                {user.rol === "Usuario" && (
+                {user.rol === "usuario" && (
                   <Link to='/gallery' className='btn btn-secondary mb-2 me-2'>
                     Ir a la Galería
                   </Link>

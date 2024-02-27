@@ -69,7 +69,7 @@ const Login = () => {
     if (user) {
       localStorage.setItem("nombre", user.nombre);
       localStorage.setItem("rol", user.rol);setUser(user);
-      navigate(user.rol === "Administrador" ? "/dashboard" : "/");       
+      navigate(user.rol === "administrador" ? "/dashboard" : "/");       
       } else {  // Credenciales incorrectas
       alert("Credenciales incorrectas. Por favor, verifique su usuario y contraseña.");
     }
