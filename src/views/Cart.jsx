@@ -1,25 +1,48 @@
+// Cart.jsx
+// Carrito de Compra
 import Context from "../context/context";
 import { useContext } from "react";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const { VITE_APP_URL } = import.meta.env;
+
 export default function Cart() {
   const { cart, setCart, setProducto } = useContext(Context);
   const navigate = useNavigate();
-
+  
   const total = cart.reduce((acc, curr) => {
     return acc + curr.p_precio * curr.qty;
   }, 0);
 
 
-  // modulo de pago
-  const handlePagar = (e) => {
-    e.preventDefault();
-    setCart([]);
-    setProducto({});
-    navigate("/gallery");
+  // modulo de pago y backend
+  const handlePagar = async () => {
+    try {
+      const carritoData = {
+        //usuario_id: user.usuario_id,
+        productos: cart.map((producto) => ({
+          producto_id: producto.id,
+          cantidad: producto.qty,
+        })),
+      };
+
+      const response = await axios.post(`${VITE_APP_URL}/carrito`, carritoData);
+      console.log("Respuesta del servidor:", response.data);
+
+      // Resetea al terminar con el backend 
+      setCart([]);
+      setProducto({});
+      navigate("/gallery");
+    } catch (error) {
+      console.error("Error al procesar el pago:", error);
+      // Manejar el error apropiadamente, mostrar un mensaje de error al usuario, etc. 
+    }
   };
 
-  
+
+  // Aumenta Cantidad +1
   const handleAdd = (producto) => {
     setCart((prevCart) => {
       const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
@@ -45,6 +68,7 @@ export default function Cart() {
     });
   };
 
+  // Disminuye Cantidad -1
   const handleRemove = (producto) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.map((item) => {
@@ -80,8 +104,7 @@ export default function Cart() {
                   alt={producto.p_name}
                   className="custom-image"
                 />
-
-                <h3 className="ms-5 text-capitalize">{producto.p_name}</h3>
+                <h5 className="text-capitalize ms-5">{producto.p_name}</h5>
               </div>
               <div className="d-flex align-items-center ">
                 <div className="me-5 text-primary  ">
@@ -113,7 +136,7 @@ export default function Cart() {
         <div> Sin productos en el carro </div>
       )}
 
-      <div className="container-precio mb-5  ">
+      <div className="container-precio mb-5">
         <p>
           total:
           {total.toLocaleString("es-CL", {

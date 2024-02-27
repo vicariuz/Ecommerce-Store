@@ -3,12 +3,13 @@
 // Card.jsx //Galeria de Card
 import "./Card.css";
 import { useNavigate } from "react-router-dom";
+//import { useEffect } from 'react';
 import { useContext } from "react";
 import Context from "../context/context";
 
 const Card = ({ producto }) => {
-  const { setProducto, setCart } = useContext(Context);
-
+  const { user, setProducto, setCart } = useContext(Context);
+  
   const renderEstrellas = () => {
     if (!producto) return null;
 
@@ -32,35 +33,50 @@ const Card = ({ producto }) => {
   const handleDetail = (e) => {
     e.preventDefault();
     setProducto(producto);
-    navigate(`/producto/${producto.id}`);
+    navigate(`/producto/${producto.producto_id}`);
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
-    setCart((prevCart) => {
-      const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
-      if (itemsFound) {
-        return prevCart.map((item) => {
-          if (item.p_name === producto.p_name) {
-            return { ...item, qty: item.qty + 1 };
+    if (!user) {
+      if (producto.p_stock > 0) {
+        setCart((prevCart) => {
+          const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
+          if (itemsFound) {
+            return prevCart.map((item) => {
+              if (item.p_name === producto.p_name) {
+                return { ...item, qty: item.qty + 1 };
+              } else {
+                return item;
+              }
+            });
           } else {
-            return item;
+            return [
+              ...prevCart,
+              {
+                p_img: producto.p_img,
+                p_name: producto.p_name,
+                p_precio: producto.p_descuento,
+                qty: 1,
+              },
+            ];
           }
         });
-      } else {
-        return [
-          ...prevCart,
-          {
-            p_img: producto.p_img,
-            p_name: producto.p_name,
-            p_precio: producto.p_descuento,
-            qty: 1,
-          },
-        ];
-      }
-    });
-  };
 
+        // Reducir el stock del producto
+        setProducto((prevProducto) => ({
+          ...prevProducto,
+          p_stock: prevProducto.p_stock - 1,
+        }));
+      } else {
+        console.log('No hay suficiente stock para agregar este producto al carrito.');
+      }
+    } else {
+      console.log('Debe iniciar sesión para comprar.');
+      // Aquí puedes mostrar un mensaje o redirigir al usuario a la página de inicio de sesión.
+    }
+  };
+  
   return (
     <div className='card shadow d-flex'>
       <img src={producto.p_img} alt={producto.p_name} />
@@ -69,7 +85,7 @@ const Card = ({ producto }) => {
       <div className='container-precio d-flex flex-column align-items-center'>
         <div className='precio d-flex justify-content-center align-items-center'>
           <p className='p_precioCard1'>
-            Now{" "}
+            Precio {" "} 
             {producto.p_descuento.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
@@ -82,8 +98,12 @@ const Card = ({ producto }) => {
             })}
           </p>
         </div>
+        <div className='stock'>
+          <p>Stock : {producto.p_stock} (u) 
+          </p>
+        </div>
         <div className='calificacion'>
-          <p>
+          <p>Valorización
             ({producto.p_rating}){renderEstrellas()}
           </p>
         </div>
@@ -96,7 +116,12 @@ const Card = ({ producto }) => {
             />
             Ver más
           </button>
-          <button className='btn btn-danger' onClick={handleAdd}>
+          <button 
+            className={`btn btn-danger ${(user) && 'disabled'}`}
+            onClick={handleAdd}
+            disabled={user}
+            style={{ backgroundColor: user ? '#181717' : '#c52447' }}
+            >
             <img
               src='/img/cart-plus-svgrepo-com.svg'
               alt=''

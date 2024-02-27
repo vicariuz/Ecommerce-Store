@@ -13,16 +13,29 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUser } = useContext(UserContext);
+  const {setUser } = useContext(UserContext);
+  //const [emailValid, setEmailValid] = useState(false);
+  //const [passwordValid, setPasswordValid] = useState(false);
 
   // Estas funciones se utilizan para manejar los cambios en los campos de entrada del usuario y actualizar el estado correspondiente (email y password).
   const handleUsernameChange = (event) => {
     setEmail(event.target.value);
+    //setEmailValid(validateEmail(email)); 
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    //setPasswordValid(validatePassword(password));
   };
+
+  //const validateEmail = (email) => {
+  //  return /\S+@\S+\.\S+/.test(email);
+  //};
+
+  //const validatePassword = (password) => {
+  //  return password.length >= 8;
+  //};
+
 // Esta función se llama cuando el formulario se envía. Primero, previene el comportamiento predeterminado del formulario usando event.preventDefault(). Luego, realiza validaciones en los campos de entrada y realiza la autenticación del usuario.
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -67,6 +80,10 @@ const Login = () => {
   }
 };
 
+// para usar tickt de validacion en el form login
+//{passwordValid ? <span className="validation-message">✔️</span> : null}
+//{emailValid ? <span className="validation-message">✔️</span> : null}
+
   return (
     <div className='loginpage vh-100  p-5'>
       <form onSubmit={handleSubmit}>
@@ -81,6 +98,7 @@ const Login = () => {
             onChange={handleUsernameChange}
             value={email}
           />
+          
         </div>
         <div className='form-group'>
           <label htmlFor='exampleInputPassword1'>Password</label>
@@ -92,10 +110,9 @@ const Login = () => {
             onChange={handlePasswordChange}
             value={password}
           />
+          
         </div>
-        <button type='submit' className='btn btn-primary'>
-          Entrar
-        </button>
+        <button type='submit' className='btn btn-primary'> Entrar </button>
       </form>
     </div>
   );

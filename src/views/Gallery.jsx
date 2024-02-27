@@ -12,7 +12,6 @@ const { VITE_APP_URL } = import.meta.env;
 
 const Gallery = () => {
   const { user } = useContext(userContext);
-
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [priceFilter, setPriceFilterState] = useState(100);
@@ -20,11 +19,13 @@ const Gallery = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [productosData, setProductosData] = useState([]);
 
+ // const handleLogin = (user);
+
   useEffect(() => {
     fetchData(); // Llama a la función para obtener los datos del backend
   }, []); // Dependencias actualizadas
 
-  const localStorageUser = localStorage.getItem("usuarioAutenticado");
+  //const localStorageUser = localStorage.getItem("usuarioAutenticado");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,7 +49,7 @@ const Gallery = () => {
   };
 
   const checkLogin = async () => {
-    if (!user && !localStorageUser) navigate("/login");
+    if (!user) navigate("/login");
     console.log("user", user);
   };
 
@@ -120,7 +121,7 @@ const Gallery = () => {
       >
         {filteredProducts.length > 0 ? (
           filteredProducts.map((producto) => (
-            <Card producto={producto} key={producto.id} />
+            <Card producto={producto} key={producto.id} user={user.nombre}/>
           ))
         ) : (
           <p id='callback' className='text-light'>

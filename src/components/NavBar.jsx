@@ -17,6 +17,7 @@ const NavBar = () => {
     // Limpiar la información del usuario del localStorage
     localStorage.removeItem("nombre");
     localStorage.removeItem("rol");
+    const total = total();
     setUser(null);
     // Redirigir a la página de inicio después de cerrar sesión
     navigate("/");
@@ -44,9 +45,7 @@ const NavBar = () => {
               <Link to='/' className='nav-link active home-link'>
                 Home
               </Link>
-              <Link to='/gallery' className='nav-link active producto-link'>
-                Productos
-              </Link>
+
             </li>
           </ul>
         </div>
@@ -59,6 +58,11 @@ const NavBar = () => {
                 {user.rol === "Administrador" && (
                   <Link to='/dashboard' className='btn btn-secondary mb-2 me-2'>
                     Volver al Dashboard
+                  </Link>
+                )}
+                {user.rol === "Usuario" && (
+                  <Link to='/gallery' className='btn btn-secondary mb-2 me-2'>
+                    Ir a la Galería
                   </Link>
                 )}
                 <Link to='/' className='btn btn-danger mb-2 me-2' onClick={handleLogout}>

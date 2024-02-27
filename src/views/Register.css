@@ -54,10 +54,7 @@ button[type="submit"]:hover {
 /* */
 .formsel-group.col {
   display: flex;
- 
 }
-
-
 
 .validation-message {
   margin-left: 10px; /* Ajusta el margen izquierdo */
