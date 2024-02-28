@@ -9,7 +9,7 @@ import Context from "../context/context";
 
 const Card = ({ producto }) => {
   const { user, setProducto, setCart } = useContext(Context);
-  
+
   const renderEstrellas = () => {
     if (!producto) return null;
 
@@ -41,7 +41,9 @@ const Card = ({ producto }) => {
     if (!user) {
       if (producto.p_stock > 0) {
         setCart((prevCart) => {
-          const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
+          const itemsFound = prevCart.find(
+            (item) => item.p_name === producto.p_name
+          );
           if (itemsFound) {
             return prevCart.map((item) => {
               if (item.p_name === producto.p_name) {
@@ -69,14 +71,16 @@ const Card = ({ producto }) => {
           p_stock: prevProducto.p_stock - 1,
         }));
       } else {
-        console.log('No hay suficiente stock para agregar este producto al carrito.');
+        console.log(
+          "No hay suficiente stock para agregar este producto al carrito."
+        );
       }
     } else {
-      console.log('Debe iniciar sesión para comprar.');
+      console.log("Debe iniciar sesión para comprar.");
       // Aquí puedes mostrar un mensaje o redirigir al usuario a la página de inicio de sesión.
     }
   };
-  
+
   return (
     <div className='card shadow d-flex'>
       <img src={producto.p_img} alt={producto.p_name} />
@@ -85,7 +89,7 @@ const Card = ({ producto }) => {
       <div className='container-precio d-flex flex-column align-items-center'>
         <div className='precio d-flex justify-content-center align-items-center'>
           <p className='p_precioCard1'>
-            Precio {" "} 
+            Precio{" "}
             {producto.p_descuento.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
@@ -99,29 +103,23 @@ const Card = ({ producto }) => {
           </p>
         </div>
         <div className='stock'>
-          <p>Stock : {producto.p_stock} (u) 
-          </p>
+          <p>Stock : {producto.p_stock} (u)</p>
         </div>
         <div className='calificacion'>
-          <p>Valorización
-            ({producto.p_rating}){renderEstrellas()}
+          <p>
+            Valorización ({producto.p_rating}){renderEstrellas()}
           </p>
         </div>
         <div className='d-flex justify-content-evenly w-100 mx-5'>
-          <button className='btn btn-success' onClick={handleDetail}>
-            <img
-              src='/img/eyes-svgrepo-com.svg'
-              alt=''
-              style={{ width: "30px", height: "30px", marginRight: "10px" }}
-            />
+          <button className='btn btn-success px-4' onClick={handleDetail}>
             Ver más
           </button>
-          <button 
-            className={`btn btn-danger ${(user) && 'disabled'}`}
+          <button
+            className={`btn btn-danger ${user && "disabled"}`}
             onClick={handleAdd}
             disabled={user}
-            style={{ backgroundColor: user ? '#181717' : '#c52447' }}
-            >
+            style={{ backgroundColor: user ? "#181717" : "#c52447" }}
+          >
             <img
               src='/img/cart-plus-svgrepo-com.svg'
               alt=''

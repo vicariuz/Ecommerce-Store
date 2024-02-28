@@ -7,19 +7,17 @@
 }
 
 .cart-icon,
-.logo,
-.home-link,
-.registrarse {
+.logo {
   transition: transform 0.3s ease-in-out;
 }
 
 .logo:hover,
 .home-link:hover,
+.gallery-link:hover,
 .producto-link:hover,
 .cart-icon:hover,
-.registrarse:hover,
 .iniciar:hover {
-  transform: scale(1.3);
+  transform: scale(1.2);
 }
 
 .pending {
