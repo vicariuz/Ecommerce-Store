@@ -1,14 +1,14 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
-import UserContext from '../context/userContext';
+import userContext from '../context/userContext';
 import axios from "axios";
 
 const { VITE_APP_URL } = import.meta.env;
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
+  const { setUser } = useContext(userContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -51,9 +51,11 @@ const Login = () => {
       });
 
       const user = response.data;
+      console.log('user que es', user)
 
       if (user) {
         localStorage.setItem("nombre", user.nombre);
+        localStorage.setItem("usuario_id", user.usuario_id);
         localStorage.setItem("rol", user.rol);
         setUser(user);
         navigate(user.rol === "administrador" ? "/dashboard" : "/");

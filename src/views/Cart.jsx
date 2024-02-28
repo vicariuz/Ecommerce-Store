@@ -5,38 +5,43 @@ import { useContext } from "react";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import userContext from "../context/userContext";
 
 const { VITE_APP_URL } = import.meta.env;
 
 export default function Cart() {
-  const { cart, setCart, setProducto } = useContext(Context);
+  const { cart, setCart } = useContext(Context);
+  const { user } = useContext(userContext);
+  console.log('contieneuser',user)
   const navigate = useNavigate();
+  console.log("Contenido del carrito:", cart);
+  
   
   const total = cart.reduce((acc, curr) => {
     return acc + curr.p_precio * curr.qty;
   }, 0);
 
 
-  // modulo de pago y backend
+  // modulo de pago y backend [ 
   const handlePagar = async () => {
-   console.log(cart)
-   
     try {
-      const carritoData = {
-        //usuario_id: user.usuario_id,
-        productos: cart.map((producto) => ({
-          producto_id: producto.id,
-          cantidad: producto.qty,
-        })),
-      };
+      // Crear el objeto de ventaSimple para enviar al backend
+      const cart1 =
+        cart.map((producto) => ({
+            producto_id: producto.producto_id,
+            cantidad: producto.qty,
+          }));
 
-      const response = await axios.post(`${VITE_APP_URL}/carrito`, carritoData);
-      console.log("Respuesta del servidor:", response.data);
+      const ventaSimple = {
+        usuario_id: user.usuario_id,
+        productos: cart1,
+      }
 
-      // Resetea al terminar con el backend 
+      const response = await
+        axios.post(`${VITE_APP_URL}/ventasimple`, ventaSimple);
+      console.log('ventasimple',response);
       setCart([]);
-      setProducto({});
-      navigate("/gallery");
+      navigate("/");
     } catch (error) {
       console.error("Error al procesar el pago:", error);
       // Manejar el error apropiadamente, mostrar un mensaje de error al usuario, etc. 
@@ -46,11 +51,9 @@ export default function Cart() {
 
   // Aumenta Cantidad +1
   const handleAdd = (producto) => {
+    console.log("Producto antes de agregar al carrito:", producto);
     setCart((prevCart) => {
       const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
-      
-      // consultar productos.
-      
       if (itemsFound) {
         return prevCart.map((item) => {
           if (item.p_name === producto.p_name) {
@@ -59,16 +62,11 @@ export default function Cart() {
             return item;
           }
         });
-      } else 
-      
-      {
-
-        //agregar producto al carrito
-
-
+      } else {
         return [
           ...prevCart,
           {
+             producto_id: producto.producto_id,
             p_img: producto.p_img,
             p_name: producto.p_name,
             p_precio: producto.p_precio,
@@ -77,6 +75,8 @@ export default function Cart() {
         ];
       }
     });
+
+
   };
 
   // Disminuye Cantidad -1
@@ -108,7 +108,7 @@ export default function Cart() {
       {cart.length ? (
         cart.map((producto) => {
           return (
-            <div className="sub-container-cart" key={producto.p_name}>
+            <div className="sub-container-cart" key={producto.p_name} >
               <div className="image-container d-flex align-items-center ms-5">
                 <img
                   src={producto.p_img}
@@ -116,6 +116,7 @@ export default function Cart() {
                   className="custom-image"
                 />
                 <h5 className="text-capitalize ms-5">{producto.p_name}</h5>
+                <p>ID del producto: {producto.producto_id}</p>
               </div>
               <div className="d-flex align-items-center ">
                 <div className="me-5 text-primary  ">

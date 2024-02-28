@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import UserContext from "../context/userContext";
+import userContext from "../context/userContext";
 import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectedRoute = ({ redirectPath = "/", children }) => {
-  const { user } = useContext(UserContext);
+  const { user } = useContext(userContext);
   if (!user) {
     return <Navigate to={redirectPath} />;
   }

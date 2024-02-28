@@ -34,84 +34,100 @@ export default function Detail() {
   };
 
   return (
-    <div className="container-detail d-flex flex-column">
+    <div className='container-detail d-flex flex-column'>
       <div
-        className="card-detail 
+        className='card-detail 
        d-flex align-items-center 
-        "
+        '
       >
-        <img src={producto.p_img} alt={producto.p_name} className="img-producto me-5  " />
+        <img
+          src={producto.p_img}
+          alt={producto.p_name}
+          className='img-producto me-5  '
+        />
 
-        <div className="">
-          <h2 className=" text-capitalize mb-3 ">{producto.p_name}</h2>
-          <p id = "subtitulo">Informacion del Producto:</p>
-          <p className="pe-5">{producto.p_desc}</p>
+        <div className=''>
+          <h2 className=' text-capitalize mb-3 '>{producto.p_name}</h2>
+          <p id='subtitulo'>Informacion del Producto:</p>
+          <p className='pe-5'>{producto.p_desc}</p>
           <strong>
             <p>STRAIN HIGHLIGHTS:</p>
           </strong>
-          <div className="feelingsSt">
-          <img
-                src="/img/iconmonstr-thumb-10.svg"
-                alt=""
-                style={{ width: "15px", height: "15px", marginRight: "10px", fill: "green" }}
-              /> 
-              <h6>Feelings:</h6>
-              <div className="feelingcontainer">
-              {producto.p_feelings}
-              </div>
+          <div className='feelingsSt'>
+            <img
+              src='/img/iconmonstr-thumb-10.svg'
+              alt=''
+              style={{
+                width: "15px",
+                height: "15px",
+                marginRight: "10px",
+                fill: "green",
+              }}
+            />
+            <h6>Feelings:</h6>
+            <div className='feelingcontainer'>{producto.p_feelings}</div>
           </div>
-          <div className="feelingsSt">
-          <img
-                src="/img/iconmonstr-thumb-6.svg"
-                alt=""
-                style={{ width: "15px", height: "15px", marginRight: "10px", fill: "green" }}
-              /> 
-              <h6>Negatives:</h6>
-              <div className="negativecontainer">
-              {producto.p_negatives}
-              </div>
+          <div className='feelingsSt'>
+            <img
+              src='/img/iconmonstr-thumb-6.svg'
+              alt=''
+              style={{
+                width: "15px",
+                height: "15px",
+                marginRight: "10px",
+                fill: "green",
+              }}
+            />
+            <h6>Negatives:</h6>
+            <div className='negativecontainer'>{producto.p_negatives}</div>
           </div>
-          <div className="feelingsSt">
-          <img
-                src="/img/iconmonstr-medical-13.svg"
-                alt=""
-                style={{ width: "18px", height: "18px", marginRight: "10px", fill: "green" }}
-              /> 
-              <h6>Helps with:</h6>
-              <div className="helpcontainer">
-              {producto.p_helpwith}
-              </div>
+          <div className='feelingsSt'>
+            <img
+              src='/img/iconmonstr-medical-13.svg'
+              alt=''
+              style={{
+                width: "18px",
+                height: "18px",
+                marginRight: "10px",
+                fill: "green",
+              }}
+            />
+            <h6>Helps with:</h6>
+            <div className='helpcontainer'>{producto.p_helpwith}</div>
           </div>
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="rating">
+          <div className='d-flex justify-content-between align-items-center'>
+            <div className='rating'>
               <h5>Rating:</h5>
-            <p>{renderEstrellas()}{producto.p_rating}</p>
+              <p>
+                {renderEstrellas()}
+                {producto.p_rating}
+              </p>
             </div>
-            <div className="precioPost">
+            <div className='precioPost'>
               <h6>Starting at</h6>
-            <h5 className="textPrice">
-              {producto.p_precio.toLocaleString("es-CL", {
-                style: "currency",
-                currency: "CLP",
-              })}
-            </h5>
+              <h5 className='textPrice'>
+                {producto.p_precio.toLocaleString("es-CL", {
+                  style: "currency",
+                  currency: "CLP",
+                })}
+              </h5>
             </div>
-            <button onClick={handleAdd} className="btn btn-danger me-5">
+            <button onClick={handleAdd} className='btn btn-danger me-5'>
               <img
-                src="/img/cart-plus-svgrepo-com.svg"
-                alt=""
+                src='/img/cart-plus-svgrepo-com.svg'
+                alt=''
                 style={{ width: "30px", height: "30px", marginRight: "10px" }}
               />
               Añadir
             </button>
+            <Link to='/' className='nav-link active'>
+              <button type='button' className='btn btn-success'>
+                Atrás
+              </button>
+            </Link>
           </div>
         </div>
       </div>
-      <Link to="/" className="nav-link active">
-        <button type="button" className="btn btn-success mt-5">
-          Atrás
-        </button>
-      </Link>
     </div>
-  );
+  ); 
 }

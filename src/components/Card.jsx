@@ -54,6 +54,7 @@ const Card = ({ producto }) => {
             return [
               ...prevCart,
               {
+                producto_id: producto.producto_id,
                 p_img: producto.p_img,
                 p_name: producto.p_name,
                 p_precio: producto.p_descuento,
@@ -80,12 +81,14 @@ const Card = ({ producto }) => {
   return (
     <div className='card shadow d-flex'>
       <img src={producto.p_img} alt={producto.p_name} />
-      <p id='subTitulo'>{producto.p_category}</p>
+      <p className='subtitulo' id='subTitulo'>
+        {producto.p_category}
+      </p>
       <h2 className='card-title text-capitalize mt-3'>{producto.p_name}</h2>
       <div className='container-precio d-flex flex-column align-items-center'>
         <div className='precio d-flex justify-content-center align-items-center'>
-          <p className='p_precioCard1'>
-            Precio {" "} 
+          <p className='p_precioCard1 '>
+            Precio{" "}
             {producto.p_descuento.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
@@ -99,29 +102,23 @@ const Card = ({ producto }) => {
           </p>
         </div>
         <div className='stock'>
-          <p>Stock : {producto.p_stock} (u) 
-          </p>
+          <p>Stock : {producto.p_stock} (u)</p>
         </div>
         <div className='calificacion'>
-          <p>Valorización
-            ({producto.p_rating}){renderEstrellas()}
+          <p>
+            Valorización ({producto.p_rating}){renderEstrellas()}
           </p>
         </div>
         <div className='d-flex justify-content-evenly w-100 mx-5'>
-          <button className='btn btn-success' onClick={handleDetail}>
-            <img
-              src='/img/eyes-svgrepo-com.svg'
-              alt=''
-              style={{ width: "30px", height: "30px", marginRight: "10px" }}
-            />
+          <button className='btn btn-success px-4' onClick={handleDetail}>
             Ver más
           </button>
-          <button 
-            className={`btn btn-danger ${(user) && 'disabled'}`}
+          <button
+            className={`btn btn-danger ${user && "disabled"}`}
             onClick={handleAdd}
             disabled={user}
-            style={{ backgroundColor: user ? '#181717' : '#c52447' }}
-            >
+            style={{ backgroundColor: user ? "#181717" : "#c52447" }}
+          >
             <img
               src='/img/cart-plus-svgrepo-com.svg'
               alt=''
@@ -132,7 +129,7 @@ const Card = ({ producto }) => {
         </div>
       </div>
     </div>
-  );
+  ); 
 };
 
 export default Card;

@@ -121,7 +121,10 @@ const Gallery = () => {
       >
         {filteredProducts.length > 0 ? (
           filteredProducts.map((producto) => (
-            <Card producto={producto} key={producto.id} user={user.nombre}/>
+            <Card
+            producto={producto} 
+            key={producto.id} 
+            user={user}/>
           ))
         ) : (
           <p id='callback' className='text-light'>
