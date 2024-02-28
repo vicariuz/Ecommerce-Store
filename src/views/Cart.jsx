@@ -19,6 +19,8 @@ export default function Cart() {
 
   // modulo de pago y backend
   const handlePagar = async () => {
+   console.log(cart)
+   
     try {
       const carritoData = {
         //usuario_id: user.usuario_id,
@@ -46,6 +48,9 @@ export default function Cart() {
   const handleAdd = (producto) => {
     setCart((prevCart) => {
       const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
+      
+      // consultar productos.
+      
       if (itemsFound) {
         return prevCart.map((item) => {
           if (item.p_name === producto.p_name) {
@@ -54,7 +59,13 @@ export default function Cart() {
             return item;
           }
         });
-      } else {
+      } else 
+      
+      {
+
+        //agregar producto al carrito
+
+
         return [
           ...prevCart,
           {

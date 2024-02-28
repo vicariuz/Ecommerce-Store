@@ -1,13 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
-import "../components/NavBar.css";
-import { useContext } from "react";
+import  { useContext, useEffect } from "react";
 import Context from "../context/context";
 import UserContext from "../context/userContext";
 
 const NavBar = () => {
-  const { cart } = useContext(Context);
+  const { cart,resetCart } = useContext(Context);
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    // Cargar información del usuario desde localStorage al estado del contexto
+    const storedNombre = localStorage.getItem("nombre");
+    const storedRol = localStorage.getItem("rol");
+
+    if (storedNombre && storedRol) {
+      setUser({ nombre: storedNombre, rol: storedRol });
+    }
+  }, [setUser]);
 
   const total = cart.reduce((acc, curr) => {
     return acc + curr.p_precio * curr.qty; // Utiliza el precio y la cantidad del primer código
@@ -17,8 +26,11 @@ const NavBar = () => {
     // Limpiar la información del usuario del localStorage
     localStorage.removeItem("nombre");
     localStorage.removeItem("rol");
-    const total = total();
     setUser(null);
+
+  // Reiniciar el carrito a cero (puedes ajustar esto según tu lógica)
+    resetCart();
+
     // Redirigir a la página de inicio después de cerrar sesión
     navigate("/");
   };
@@ -45,16 +57,17 @@ const NavBar = () => {
               <Link to='/' className='nav-link active home-link'>
                 Home
               </Link>
-
             </li>
           </ul>
         </div>
-      
+
         <div className='d-flex align-items-center'>
           <div className='d-flex align-items-center ms-3'>
             {user ? (
-              <> 
-                <h6 className='registrarse text-success mb-2 me-5'>Hola, {user.nombre}</h6>
+              <>
+                <h6 className='registrarse text-success mb-2 me-5'>
+                  Hola, {user.nombre}
+                </h6>
                 {user.rol === "administrador" && (
                   <Link to='/dashboard' className='btn btn-secondary mb-2 me-2'>
                     Volver al Dashboard
@@ -65,7 +78,11 @@ const NavBar = () => {
                     Ir a la Galería
                   </Link>
                 )}
-                <Link to='/' className='btn btn-danger mb-2 me-2' onClick={handleLogout}>
+                <Link
+                  to='/'
+                  className='btn btn-danger mb-2 me-2'
+                  onClick={handleLogout}
+                >
                   Cerrar Sesión
                 </Link>
               </>

@@ -1,3 +1,5 @@
+
+
 .login-container {
   height: 100%;
   width: 100%;
@@ -35,4 +37,11 @@ input[type="password"] {
 
 .validation-message {
   margin-left: 10px; /* Ajusta el margen izquierdo */
+}
+
+.createAccount{
+  color: #00796b;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  
 }
