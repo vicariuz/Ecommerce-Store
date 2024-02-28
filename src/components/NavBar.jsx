@@ -1,14 +1,14 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import  { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Context from "../context/context";
-import userContext from "../context/userContext";
+import UserContext from "../context/userContext";
 import "./NavBar.css";
 
 const NavBar = () => {
-  const { cart,resetCart } = useContext(Context);
+  const { cart, resetCart } = useContext(Context);
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, setUser } = useContext(userContext);
+  const { user, setUser } = useContext(UserContext);
   const currentPath = location.pathname;
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const NavBar = () => {
     localStorage.setItem("usuario_id", user.usuario_id);
     setUser(null);
 
-  // Reiniciar el carrito a cero (puedes ajustar esto según tu lógica)
+    // Reiniciar el carrito a cero (puedes ajustar esto según tu lógica)
     resetCart();
 
     // Redirigir a la página de inicio después de cerrar sesión

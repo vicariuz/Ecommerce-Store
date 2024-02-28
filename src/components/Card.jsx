@@ -9,7 +9,7 @@ import Context from "../context/context";
 
 const Card = ({ producto }) => {
   const { user, setProducto, setCart } = useContext(Context);
-  
+
   const renderEstrellas = () => {
     if (!producto) return null;
 
@@ -41,7 +41,9 @@ const Card = ({ producto }) => {
     if (!user) {
       if (producto.p_stock > 0) {
         setCart((prevCart) => {
-          const itemsFound = prevCart.find((item) => item.p_name === producto.p_name);
+          const itemsFound = prevCart.find(
+            (item) => item.p_name === producto.p_name
+          );
           if (itemsFound) {
             return prevCart.map((item) => {
               if (item.p_name === producto.p_name) {
@@ -70,14 +72,16 @@ const Card = ({ producto }) => {
           p_stock: prevProducto.p_stock - 1,
         }));
       } else {
-        console.log('No hay suficiente stock para agregar este producto al carrito.');
+        console.log(
+          "No hay suficiente stock para agregar este producto al carrito."
+        );
       }
     } else {
-      console.log('Debe iniciar sesión para comprar.');
+      console.log("Debe iniciar sesión para comprar.");
       // Aquí puedes mostrar un mensaje o redirigir al usuario a la página de inicio de sesión.
     }
   };
-  
+
   return (
     <div className='card shadow d-flex'>
       <img src={producto.p_img} alt={producto.p_name} />
@@ -87,7 +91,7 @@ const Card = ({ producto }) => {
       <h2 className='card-title text-capitalize mt-3'>{producto.p_name}</h2>
       <div className='container-precio d-flex flex-column align-items-center'>
         <div className='precio d-flex justify-content-center align-items-center'>
-          <p className='p_precioCard1 '>
+          <p className='p_precioCard1'>
             Precio{" "}
             {producto.p_descuento.toLocaleString("es-CL", {
               style: "currency",
